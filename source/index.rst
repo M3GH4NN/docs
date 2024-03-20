@@ -9,4 +9,4 @@ Welcome to the central documentation roll-up page.
 
    https://github.com/salt-extensions/saltext-azurerm/blob/main/docs/index.rst
    https://github.com/salt-extensions/saltext-prometheus/blob/main/docs/index.rst
-   # Add more links to other repositories or external documentation as needed
+   # Add more links to other repositories or external documentation as needed.
