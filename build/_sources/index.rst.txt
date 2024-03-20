@@ -1,20 +1,12 @@
-.. Central Docs documentation master file, created by
-   sphinx-quickstart on Wed Mar 20 18:54:54 2024.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Roll-up Page
+============
 
-Welcome to Central Docs's documentation!
-========================================
+Welcome to the central documentation roll-up page.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Extensions
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   https://github.com/salt-extensions/saltext-azurerm/blob/main/docs/index.rst
+   https://github.com/salt-extensions/saltext-prometheus/blob/main/docs/index.rst
+   # Add more links to other repositories or external documentation as needed
