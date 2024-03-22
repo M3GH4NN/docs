@@ -1,7 +1,7 @@
 Roll-up Page
 ============
 
-Welcome to the central documentation roll-up page.
+Welcome to the central documentation roll-up page!
 
 Extensions
 ----------
