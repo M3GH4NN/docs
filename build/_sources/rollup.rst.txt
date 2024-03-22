@@ -1,6 +1,7 @@
 Roll-up Page
 ============
 
+Welcome to the central documentation roll-up page.
 
 Extensions
 ----------
@@ -8,8 +9,11 @@ Extensions
 You can explore documentation from other repositories below:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Extensions
 
-   https://github.com/salt-extensions/saltext-azurerm/blob/main/docs/index.rst
-   https://github.com/salt-extensions/saltext-prometheus/blob/main/docs/index.rst
+   :ref:`python:`
+   :ref:`pytest:`
+   :ref:`salt:`
+   :ref:`azurerm:`
+
