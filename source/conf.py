@@ -8,17 +8,8 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import datetime
-import email.policy
 import os
-import sys
 from pathlib import Path
-
-try:
-    from importlib_metadata import distribution
-except ImportError:
-    from importlib.metadata import distribution
-
 
 try:
     docs_basepath = os.path.abspath(os.path.dirname(__file__))
@@ -28,9 +19,6 @@ except NameError:
     docs_basepath = os.path.abspath(os.path.dirname("."))
 
 PROJECT_ROOT_DIR = Path(docs_basepath).parent
-
-
-
 
 # Variables to pass into the docs from sitevars.rst for rst substitution
 with open("sitevars.rst") as site_vars_file:
@@ -129,6 +117,7 @@ intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
     "pytest": ("https://docs.pytest.org/en/stable", None),
     "salt": ("https://docs.saltproject.io/en/latest", None),
+    'dummy-repo': ('https://github.com/M3GH4NN/dummy-repo/docs/_build/html/', None),
 }
 # <---- Intersphinx Config -----------------------------------------------------------------------------------------
 
