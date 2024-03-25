@@ -6,37 +6,25 @@ Welcome to the central documentation roll-up page.
 Extensions
 ----------
 
-You can explore documentation from other repositories below:
+You can explore documentation from other repositories below.
 
-- :ref:`Python Extension <python>`
-- :ref:`Pytest Extension <pytest>`
-- :ref:`Salt Extension <salt>`
-- :ref:`AzureRM Extension <azurerm>`
-
-.. _python:
 
 Python Extension
 ----------------
 
-This is the documentation for the Python extension.
-
-.. _pytest:
+For more information about the Python extension, refer to the :ref:`python:os` documentation.
 
 Pytest Extension
 ----------------
 
-This is the documentation for the Pytest extension.
-
-.. _salt:
+For more information about the Pytest extension, refer to the :ref:`pytest:fixture` documentation.
 
 Salt Extension
 --------------
 
-This is the documentation for the Salt extension.
-
-.. _azurerm:
+For more information about the Salt extension, refer to the :ref:`salt:states` documentation.
 
 AzureRM Extension
 -----------------
 
-This is the documentation for the AzureRM extension.
+For more information about the AzureRM extension, refer to the :ref:`azurerm:overview` documentation.
