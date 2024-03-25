@@ -12,8 +12,10 @@ You can explore documentation from other repositories below:
    :maxdepth: 4
    :caption: Extensions
 
-   :doc:`Python Documentation <python>`
-   :doc:`Pytest Documentation <pytest>`
+   :ref:`python`
+   :ref:`python:os`
+   :ref:`pytest`
+   :ref:`pytest:fixture`
    :ref:`salt`
    :ref:`azurerm`
 

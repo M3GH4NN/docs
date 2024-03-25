@@ -18,7 +18,4 @@ Contents:
 
    rollup
 
-Roll-up Page
-------------
 
-.. include:: rollup.rst
