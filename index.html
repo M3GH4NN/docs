@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -156,11 +156,8 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
-<ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="rollup.html">Roll-up Page</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Roll-up Page</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
-</ul>
-</li>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="rollup.html">Roll-up Page</a></li>
 </ul>
 
 </div>
@@ -189,7 +186,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -197,14 +194,8 @@
         <article role="main">
           <section id="welcome-to-my-documentation">
 <h1>Welcome to My Documentation!<a class="headerlink" href="#welcome-to-my-documentation" title="Link to this heading">#</a></h1>
-<p>For more information, see the <a class="reference external" href="https://docs.python.org/3/c-api/sys.html#os" title="(in Python v3.12)"><span>Operating System Utilities</span></a> module in Python documentation.</p>
-<p>For testing, refer to the <a class="reference external" href="https://docs.pytest.org/en/stable/reference/fixtures.html#fixture" title="(in pytest v0.1.dev133+g81653ee)"><span>Fixtures reference</span></a> function in pytest documentation.</p>
-<p>To learn about SaltStack, check out the <span class="xref std std-ref">salt:states</span> documentation in SaltStack documentation.</p>
-<p>For Azure Resource Manager, see the <span class="xref std std-ref">azurerm:overview</span> in AzureRM documentation.</p>
-<section id="contents">
-<h2>Contents:<a class="headerlink" href="#contents" title="Link to this heading">#</a></h2>
+<p>This is the index page.</p>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="rollup.html">Roll-up Page</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="rollup.html#extensions">Extensions</a></li>
@@ -217,6 +208,13 @@
 </ul>
 </div>
 </section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
 </section>
 
         </article>
@@ -252,27 +250,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Welcome to My Documentation!</a><ul>
-<li><a class="reference internal" href="#contents">Contents:</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

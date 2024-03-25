@@ -8,35 +8,35 @@ Extensions
 
 You can explore documentation from other repositories below:
 
-.. toctree::
-   :maxdepth: 4
-   :caption: Extensions
-
-   python
-   pytest
-   salt
-   azurerm
+- :ref:`Python Extension <python>`
+- :ref:`Pytest Extension <pytest>`
+- :ref:`Salt Extension <salt>`
+- :ref:`AzureRM Extension <azurerm>`
 
 .. _python:
+
 Python Extension
 ----------------
 
-For more information about the Python extension, refer to the :ref:`python:os` documentation.
+This is the documentation for the Python extension.
 
 .. _pytest:
+
 Pytest Extension
 ----------------
 
-For more information about the Pytest extension, refer to the :ref:`pytest:fixture` documentation.
+This is the documentation for the Pytest extension.
 
 .. _salt:
+
 Salt Extension
 --------------
 
-For more information about the Salt extension, refer to the :ref:`salt:states` documentation.
+This is the documentation for the Salt extension.
 
 .. _azurerm:
+
 AzureRM Extension
 -----------------
 
-For more information about the AzureRM extension, refer to the :ref:`azurerm:overview` documentation.
+This is the documentation for the AzureRM extension.
