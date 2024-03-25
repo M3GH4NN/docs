@@ -118,6 +118,7 @@ intersphinx_mapping = {
     "pytest": ("https://docs.pytest.org/en/stable", None),
     "salt": ("https://docs.saltproject.io/en/latest/", None),
     "azurerm": ("https://saltext-azurerm.readthedocs.io/en/latest/", None),
+    "dummy": ("https://m3gh4nn.github.io/dummy-repo/", None),
 }
 
 # ----- Autodoc Config ---------------------------------------------------------------------------------------------->
