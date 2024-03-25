@@ -27,10 +27,10 @@ For more information about the Pytest extension, refer to the :ref:`pytest:fixtu
 Salt Extension
 --------------
 
-For more information about the Salt extension, refer to the :salt:`states` documentation.
+For more information about the Salt extension, refer to the :doc:`salt:contents` documentation.
 
 
 AzureRM Extension
 -----------------
 
-For more information about the AzureRM extension, refer to the :azurerm:`overview` documentation.
+For more information about the AzureRM extension, refer to the :doc:`azurerm:index` documentation.

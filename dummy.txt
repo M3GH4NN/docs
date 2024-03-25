@@ -1,0 +1,10 @@
+std:doc
+    all                                      Complete List of elasticsearch          : all.html
+    index                                    Welcome to elasticsearch Documentation! : index.html
+std:label
+    all the states/modules                   Complete List of elasticsearch          : all.html#all-the-states-modules
+    genindex                                 Index                                   : genindex.html
+    installation-guide                       Installation Guide                      : index.html#installation-guide
+    modindex                                 Module Index                            : py-modindex.html
+    py-modindex                              Python Module Index                     : py-modindex.html
+    search                                   Search Page                             : search.html
