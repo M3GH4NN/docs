@@ -12,10 +12,27 @@ You can explore documentation from other repositories below:
    :maxdepth: 4
    :caption: Extensions
 
-   :ref:`python`
-   :ref:`python:os`
-   :ref:`pytest`
-   :ref:`pytest:fixture`
-   :ref:`salt`
-   :ref:`azurerm`
+   python
+   pytest
+   salt
+   azurerm
 
+Python Extension
+----------------
+
+For more information about the Python extension, refer to the :ref:`python:os` documentation.
+
+Pytest Extension
+----------------
+
+For more information about the Pytest extension, refer to the :ref:`pytest:fixture` documentation.
+
+Salt Extension
+--------------
+
+For more information about the Salt extension, refer to the :ref:`salt:states` documentation.
+
+AzureRM Extension
+-----------------
+
+For more information about the AzureRM extension, refer to the :ref:`azurerm:overview` documentation.
