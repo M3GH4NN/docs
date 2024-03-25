@@ -116,8 +116,8 @@ napoleon_use_rtype = True
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
     "pytest": ("https://docs.pytest.org/en/stable", None),
-    "salt": ("https://docs.saltproject.io/en/latest", None),
-    "azurerm": ("https://saltext-azurerm.readthedocs.io/en/latest", None),
+    "salt": ("https://docs.saltproject.io/en/latest/", None),
+    "azurerm": ("https://saltext-azurerm.readthedocs.io/en/latest/", None),
 }
 
 # ----- Autodoc Config ---------------------------------------------------------------------------------------------->

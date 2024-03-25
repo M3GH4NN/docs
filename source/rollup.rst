@@ -14,6 +14,6 @@ You can explore documentation from other repositories below:
 
    :doc:`Python Documentation <python>`
    :doc:`Pytest Documentation <pytest>`
-   :doc:`Salt Documentation <salt>`
-   :doc:`AzureRM Documentation <azurerm>`
+   :ref:`salt`
+   :ref:`azurerm`
 
