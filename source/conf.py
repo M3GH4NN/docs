@@ -119,7 +119,6 @@ intersphinx_mapping = {
     "salt": ("https://docs.saltproject.io/en/latest", None),
     "azurerm": ("https://saltext-azurerm.readthedocs.io/en/latest", None),
 }
-# <---- Intersphinx Config -----------------------------------------------------------------------------------------
 
 # ----- Autodoc Config ---------------------------------------------------------------------------------------------->
 autodoc_default_options = {"member-order": "bysource"}
