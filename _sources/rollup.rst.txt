@@ -12,7 +12,7 @@ You can explore documentation from other repositories below.
 Dummy Extension
 ----------------
 
-For more information about the Dummy extension, refer to the :ref:`dummy` documentation.
+For more information about the Dummy extension, refer to the :ref:`dummy:_installation-guide` documentation.
 
 Python Extension
 ----------------
