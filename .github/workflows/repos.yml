@@ -1,0 +1,44 @@
+name: Check for New Repositories
+
+on:
+  push:
+    branches:
+      - main  # Adjust this according to your default branch
+
+jobs:
+  check_for_new_repos:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Repositories
+        id: list_repos
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const response = await github.repos.listForOrg({
+              org: 'salt-extensions',
+              per_page: 100
+            });
+            return response.data.map(repo => repo.name);
+      
+      - name: Store Repositories in File
+        run: echo "${{ steps.list_repos.outputs.result }}" > stored_repos.txt
+      
+       - name: Compare with Stored Repos
+        id: compare_repos
+        run: |
+          # Read the list of stored repositories from a file
+          stored_repos=$(cat stored_repos.txt)
+
+          # Loop through each repository obtained from GitHub
+          for repo in "${{ steps.list_repos.outputs.result }}"; do
+            # Check if the repository is in the list of stored repositories
+            if [[ ! $stored_repos =~ $repo ]]; then
+              echo "New repository found: $repo"
+              # Perform actions here, such as updating the index.rst file in your central docs repository
+              # Example: echo "- $repo" >> index.rst
+            fi
+          done
+
+
+      # Add further steps to perform actions based on the comparison results
