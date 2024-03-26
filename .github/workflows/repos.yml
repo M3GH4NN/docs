@@ -24,7 +24,7 @@ jobs:
       - name: Store Repositories in File
         run: echo "${{ steps.list_repos.outputs.result }}" > stored_repos.txt
       
-       - name: Compare with Stored Repos
+      - name: Compare with Stored Repos
         id: compare_repos
         run: |
           # Read the list of stored repositories from a file
