@@ -21,7 +21,7 @@ jobs:
       - name: Extract intersphinx_mapping
         id: extract_mapping
         run: |
-          intersphinx_mapping=$(python -c "
+          filtered_mapping=$(python -c "
           with open('source/conf.py', 'r') as f:
               conf_content = f.read()
           
@@ -41,7 +41,9 @@ jobs:
           print(filtered_mapping)
           ")
           
-          echo "INTERSPHINX_MAPPING=$intersphinx_mapping" >> $GITHUB_ENV
+          echo "::set-output name=filtered_mapping::$filtered_mapping"
+          
+          
         
       
       - name: List Repositories
