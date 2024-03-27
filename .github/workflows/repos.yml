@@ -9,9 +9,6 @@ jobs:
   check_for_new_repos:
     runs-on: ubuntu-latest
 
-    outputs:
-      intersphinx_mapping: ${{ steps.extract_mapping.outputs.intersphinx_mapping }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
