@@ -70,7 +70,7 @@ jobs:
 
       - name: Compare Repositories
         run: |
-          IFS=$'\n' read -r -d '' -a array <<< "$(jq -r '.[]' <<< "${{ steps.list_repos.outputs.result }}")"
+          IFS=$'\n' read -r -d '' -a array <<< "$(jq -r '.[]' <<< ${{ steps.list_repos.outputs.result }})"
 
           # Print array elements
           printf '%s\n' "${array[@]}"
