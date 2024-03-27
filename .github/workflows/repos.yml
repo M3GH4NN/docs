@@ -38,9 +38,14 @@ jobs:
           
           # Join the lines back together and print
           filtered_mapping = '\n'.join(filtered_lines)
-          print(filtered_mapping)
+          # Parse the filtered mapping as a dictionary
+          mapping_dict = eval(filtered_mapping)
+          # Convert the dictionary to a list of dictionaries
+          mapping_list = [{'module': key, 'url': value[0]} for key, value in mapping_dict.items()]
+          print(mapping_list)
           ")
-          echo "::set-output name=filtered_mapping::$filtered_mapping"
+          echo "$filtered_mapping"
+    
         
       
       - name: List Repositories
@@ -58,9 +63,9 @@ jobs:
         run: |
           echo "Intersphinx Mapping: ${{ steps.extract_mapping.outputs.filtered_mapping }}"
       
-      - name: Debug Intersphinx Mapping
+      - name: Debug Repos
         run: |
-          echo "repos: ${{ steps.list_repos.outputs.result }}"    
+          echo "Repos: ${{ steps.list_repos.outputs.result }}"    
 
       - name: Compare Repositories
         run: |
