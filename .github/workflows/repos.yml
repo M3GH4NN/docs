@@ -72,6 +72,6 @@ jobs:
         run: |
           for repo in ${{ steps.list_repos.outputs.result }}; do
             if ! echo "${{ steps.extract_mapping.outputs.filtered_mapping }}" | grep -q "$repo"; then
-            echo "Repository $repo is missing from Intersphinx Mapping."
+              echo "Repository $repo is missing from Intersphinx Mapping."
             fi
           done
