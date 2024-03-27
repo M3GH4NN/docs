@@ -40,29 +40,7 @@ jobs:
           filtered_mapping = '\n'.join(filtered_lines)
           print(filtered_mapping)
           ")
-          echo "filtered_mapping=$filtered_mapping" >> $GITHUB_ENV
-
-      - name: Extract intersphinx_mapping keys
-        id: extract_keys
-        run: |
-          filtered_mapping_keys=$(python -c "
-          import ast
-        
-          # Define the filtered_mapping string
-          filtered_mapping_str = \"\"\"${{ env.filtered_mapping }}\"\"\"
-        
-          # Parse the filtered_mapping string as a dictionary
-          filtered_mapping_dict = ast.literal_eval(filtered_mapping_str)
-          
-          # Extract keys and convert them to a list
-          keys_list = list(filtered_mapping_dict.keys())
-          
-          # Format keys as an array string
-          keys_array_str = '[\"' + '\",\"'.join(keys_list) + '\"]'
-          
-          # Print the array string
-          print(keys_array_str)
-          ")       
+          echo "::set-output name=filtered_mapping::$filtered_mapping"
         
       
       - name: List Repositories
@@ -78,7 +56,7 @@ jobs:
 
       - name: Debug Intersphinx Mapping
         run: |
-          echo "Intersphinx Mapping: ${{ steps.extract_mapping.outputs.intersphinx_mapping }}"
+          echo "Intersphinx Mapping: ${{ steps.extract_mapping.outputs.filtered_mapping }}"
       
       - name: Debug Intersphinx Mapping
         run: |
@@ -87,7 +65,7 @@ jobs:
       - name: Compare Repositories
         run: |
           for repo in ${{ steps.list_repos.outputs.result }}; do
-          if ! echo "${{ steps.extract_mapping.outputs.intersphinx_mapping }}" | grep -q "$repo"; then
+          if ! echo "${{ steps.extract_mapping.outputs.filtered_mapping }}" | grep -q "$repo"; then
           echo "Repository $repo is missing from Intersphinx Mapping."
           fi
           done
