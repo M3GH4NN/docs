@@ -27,8 +27,9 @@ jobs:
       - name: Extract Intersphinx Mapping from conf.py
         id: extract_mapping
         run: |
-          INTERSPHINX_MAPPING=$(grep -A 10 "intersphinx_mapping" source/conf.py | grep -v "intersphinx_mapping" | sed -e 's/^[[:space:]]*//')
-          echo "INTERSPHINX_MAPPING=$INTERSPHINX_MAPPING" >> $GITHUB_ENV
+          INTERSPHINX_MAPPING=$(grep -A 10 "intersphinx_mapping" source/conf.py | grep -v "intersphinx_mapping" | sed -e 's/^[[:space:]]*//' | tr -d '\n' | sed 's/"/\\"/g')
+          echo "INTERSPHINX_MAPPING=\"$INTERSPHINX_MAPPING\"" >> $GITHUB_ENV
+        
     
       - name: Print Intersphinx Mapping
         run: echo "${{ env.INTERSPHINX_MAPPING }}"
