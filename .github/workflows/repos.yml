@@ -21,6 +21,10 @@ jobs:
             });
             return response.data.map(repo => repo.name);
       
+      - name: List files in source directory
+        run: |
+          ls -l 
+          
       - name: Check Intersphinx Mapping
         run: |
           echo "Checking intersphinx mapping..."
@@ -29,7 +33,7 @@ jobs:
           # You'll need to replace `path/to/intersphinx_mapping.py` with the actual path
           # of your intersphinx mapping file.
           
-          ls
+          mapping=$(grep -oP "(?<=intersphinx_mapping = ).*" conf.py)
 
           # Loop through fetched repositories and check if they are listed in the mapping
           
