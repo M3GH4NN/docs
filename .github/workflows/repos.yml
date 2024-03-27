@@ -22,20 +22,20 @@ jobs:
         id: extract_mapping
         run: |
           filtered_mapping=$(python -c '
-          with open('source/conf.py', 'r') as f:
+          with open("source/conf.py", "r") as f:
             conf_content = f.read()
             
           # Find the start and end of the intersphinx_mapping block
-          start_idx = conf_content.find('intersphinx_mapping')
-          end_idx = conf_content.find('}', start_idx)
+          start_idx = conf_content.find("intersphinx_mapping")
+          end_idx = conf_content.find("}", start_idx)
           
           # Extract the block
           mapping_block = conf_content[start_idx:end_idx+1]
           print(mapping_block)
           
           # Find the start and end of the dictionary
-          start_idx = mapping_block.find('{')
-          end_idx = mapping_block.rfind('}')
+          start_idx = mapping_block.find("{")
+          end_idx = mapping_block.rfind("}")
 
           # Extract the dictionary part
           dictionary_string = mapping_block[start_idx:end_idx + 1]
@@ -45,8 +45,6 @@ jobs:
 
           # Extract keys from the dictionary
           filtered_mapping = list(mapping_dict.keys())
-          
-         
           ')
           echo "$filtered_mapping"
 
