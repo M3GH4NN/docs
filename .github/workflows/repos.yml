@@ -20,7 +20,6 @@ jobs:
 
       - name: Extract intersphinx_mapping
         run: |
-          python -c "
           with open('source/conf.py', 'r') as f:
             conf_content = f.read()
           
@@ -39,8 +38,6 @@ jobs:
           filtered_mapping = '\n'.join(filtered_lines)
           print(filtered_mapping)
         
-          "
-      
       - name: List Repositories
         id: list_repos
         uses: actions/github-script@v4
