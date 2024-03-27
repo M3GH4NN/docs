@@ -89,10 +89,15 @@ jobs:
           declare -p array
 
 
-          for repo in array; do
-            if ! echo "${{ steps.extract_mapping.outputs.filtered_mapping }}" | grep -q "$repo"; then
-              echo "Repository $repo is missing from Intersphinx Mapping."
-            fi
+          # Convert the string to an array
+          declare -a repos=($string)
+
+          # Loop through the array
+          for repo in "${repos[@]}"; do
+              # Check if the repo is missing from the filtered mapping
+              if ! echo "${{ steps.extract_mapping.outputs.filtered_mapping }}" | grep -q "$repo"; then
+                  echo "Repository $repo is missing from Intersphinx Mapping."
+              fi
           done
     
     
