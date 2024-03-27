@@ -44,6 +44,7 @@ jobs:
 
           # Extract keys from the dictionary
           filtered_mapping = list(mapping_dict.keys())
+          print(filtered_mapping)
           ')
           echo "$filtered_mapping"
 
