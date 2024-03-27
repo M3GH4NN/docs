@@ -55,6 +55,14 @@ jobs:
             });
             return response.data.map(repo => repo.name);
 
+      - name: Debug Intersphinx Mapping
+        run: |
+          echo "Intersphinx Mapping: ${{ steps.extract_mapping.outputs.intersphinx_mapping }}"
+      
+      - name: Debug Intersphinx Mapping
+        run: |
+          echo "repos: ${{ steps.list_repos.outputs.result }}"    
+
       - name: Compare Repositories
         run: |
           for repo in ${{ steps.list_repos.outputs.result }}; do
