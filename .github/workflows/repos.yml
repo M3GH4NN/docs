@@ -10,8 +10,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository code
+      - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Extract intersphinx_mapping
+        run: |
+          python -c "
+          import sys
+          sys.path.append('source')
+          import conf
+          print(conf.intersphinx_mapping)
+          "
       
       - name: List Repositories
         id: list_repos
@@ -24,24 +38,4 @@ jobs:
             });
             return response.data.map(repo => repo.name);
       
-      - name: Extract Intersphinx Mapping from conf.py
-        id: extract_mapping
-        run: |
-          INTERSPHINX_MAPPING=$(grep "intersphinx_mapping" source/conf.py | grep -v "intersphinx_mapping" | sed -e 's/^[[:space:]]*//' | tr -d '\n' | sed 's/"/\\"/g')
-          echo "INTERSPHINX_MAPPING=\"$INTERSPHINX_MAPPING\"" >> $GITHUB_ENV
-        
-
-      - name: Compare with Intersphinx Mapping
-        id: compare_repos
-        run: |
-          INTERSPHINX_MAPPING="${{ env.INTERSPHINX_MAPPING }}"
-          REPO_LIST="${{ env.REPO_LIST }}"
-    
-          for repo in "${{ steps.list_repos.outputs.result }}"; do
-          if ! echo "${INTERSPHINX_MAPPING}" | grep -q "\"${repo}\""; then
-            echo "Repository $repo is missing from Intersphinx Mapping."
-          fi
-          done
-        env:
-          INTERSPHINX_MAPPING: ${{ env.INTERSPHINX_MAPPING }}
-          REPO_LIST: ${{ env.REPO_LIST }}
+  
