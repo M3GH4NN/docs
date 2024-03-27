@@ -38,14 +38,9 @@ jobs:
           
           # Join the lines back together and print
           filtered_mapping = '\n'.join(filtered_lines)
-          # Parse the filtered mapping as a dictionary
-          mapping_dict = eval(filtered_mapping)
-          # Convert the dictionary to a list of dictionaries
-          mapping_list = [{'module': key, 'url': value[0]} for key, value in mapping_dict.items()]
-          print(mapping_list)
+          print(filtered_mapping)
           ")
-          echo "$filtered_mapping"
-    
+          echo "::set-output name=filtered_mapping::$filtered_mapping"
         
       
       - name: List Repositories
