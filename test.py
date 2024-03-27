@@ -1,4 +1,4 @@
-intersphinx = ['python', 'pytest', 'salt', 'dummy', 'saltext-prometheus', 'saltext-moosefs', 'saltext-azurerm', 'saltext-proxmox', 'saltext-zabbix', 'saltext-apache', 'saltext-vault', 'extension_migration', 'saltext-mysql', 'saltext-namecheap', 'saltext-restconf', 'saltext-elasticsearch', 'saltext-kubernetes', 'salt-extension-copier', 'saltext-pushover', 'saltext-servicenow', 'saltext-mongodb', 'central-artifacts', 'saltext-mattermost', 'saltext-helm', 'saltext-consul', 'saltext-grafana', 'saltext-github', 'saltext-freezer', 'saltext-haproxy', 'saltext-redis', 'saltext-pagerduty', '.github', 'saltext-dell', 'saltext-splunk', 'saltext-zookeeper', 'community-extensions-holding', 'community', 'salt-describe', 'saltext-vector', 'saltext-tsl']
+intersphinx = ['python', 'pytest', 'salt', 'dummy', 'saltext-prometheus', 'saltext-moosefs', 'saltext-azurerm', 'saltext-proxmox', 'saltext-zabbix', 'saltext-apache', 'saltext-vault', 'extension_migration', 'saltext-mysql', 'saltext-namecheap', 'saltext-restconf', 'saltext-elasticsearch', 'saltext-kubernetes', 'salt-extension-copier', 'saltext-pushover', 'saltext-servicenow', 'saltext-mongodb', 'central-artifacts', 'saltext-mattermost', 'saltext-helm', 'saltext-consul', 'saltext-grafana', 'saltext-github', 'saltext-freezer', 'saltext-haproxy', 'saltext-redis', 'saltext-pagerduty', '.github', 'saltext-dell', 'saltext-splunk', 'saltext-zookeeper', 'community-extensions-holding', 'community', 'salt-describe', 'saltext-vector']
 
 repos = ["saltext-prometheus","saltext-moosefs","saltext-azurerm","saltext-proxmox","saltext-zabbix","saltext-apache","saltext-vault","extension_migration","saltext-mysql","saltext-namecheap","saltext-restconf","saltext-elasticsearch","saltext-kubernetes","salt-extension-copier","saltext-pushover","saltext-servicenow","saltext-mongodb","central-artifacts","saltext-mattermost","saltext-helm","saltext-consul","saltext-grafana","saltext-github","saltext-freezer","saltext-haproxy","saltext-redis","saltext-pagerduty",".github","saltext-dell","saltext-splunk","saltext-zookeeper","community-extensions-holding","community","salt-describe","saltext-vector","saltext-tsl"]
 
@@ -28,6 +28,6 @@ keys = list(mapping_dict.keys())
 
 # print(keys)
     
-for item in intersphinx:
-    if item not in repos:
+for item in repos:
+    if item not in intersphinx:
         print("new repo: ", item)
