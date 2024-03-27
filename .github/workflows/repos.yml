@@ -6,10 +6,9 @@ on:
       - main  # Adjust this according to your default branch
 
 jobs:
-  extract_mapping_job:
+  check_for_new_repos:
     runs-on: ubuntu-latest
-    outputs:
-      filtered_mapping: ${{ steps.extract_mapping.outputs.filtered_mapping }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -45,13 +44,12 @@ jobs:
 
           # Extract keys from the dictionary
           filtered_mapping = list(mapping_dict.keys())
+          print(filtered_mapping)
           ')
 
-  list_repos_job:
-    runs-on: ubuntu-latest
-    outputs:
-      repo_names: ${{ steps.list_repos.outputs.repo_names }}
-    steps:
+          echo "$filtered_mapping"
+
+      
       - name: List Repositories
         id: list_repos
         uses: actions/github-script@v4
@@ -63,25 +61,18 @@ jobs:
             });
             return response.data.map(repo => repo.name);
 
-      - name: Set output
-        run: echo "::set-output name=repo_names::${{ steps.list_repos.outputs.result }}"
-
-  compare_repositories_job:
-    runs-on: ubuntu-latest
-    needs: [extract_mapping_job, list_repos_job]
-    steps:
       - name: Debug Intersphinx Mapping
         run: |
-          echo "Intersphinx Mapping: ${{ needs.extract_mapping_job.outputs.filtered_mapping }}"
+          echo "Intersphinx Mapping: ${{ steps.extract_mapping.outputs.filtered_mapping }}"
       
       - name: Debug Repos
         run: |
-          echo "Repos: ${{ needs.list_repos_job.outputs.repo_names }}"    
+          echo "Repos: ${{ steps.list_repos.outputs.result }}"    
 
       - name: Compare Repositories
         run: |
-          for repo in ${{ needs.list_repos_job.outputs.repo_names }}; do
-            if ! echo "${{ needs.extract_mapping_job.outputs.filtered_mapping }}" | grep -q "$repo"; then
-              echo "Repository $repo is missing from Intersphinx Mapping."
-            fi
+          for repo in ${{ steps.list_repos.outputs.result }}; do
+          if ! echo "${{ steps.extract_mapping.outputs.filtered_mapping }}" | grep -q "$repo"; then
+          echo "Repository $repo is missing from Intersphinx Mapping."
+          fi
           done
