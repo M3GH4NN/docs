@@ -21,24 +21,21 @@ jobs:
             });
             return response.data.map(repo => repo.name);
       
-      - name: Store Repositories in File
-        run: echo "${{ steps.list_repos.outputs.result }}" > stored_repos.txt
-      
-      - name: Compare with Stored Repos
-        id: compare_repos
+      - name: Check Intersphinx Mapping
         run: |
-          # Read the list of stored repositories from a file
-          stored_repos=$(cat stored_repos.txt)
+          echo "Checking intersphinx mapping..."
 
-          # Loop through each repository obtained from GitHub
+          # Read the intersphinx mapping from your central docs repository
+          # You'll need to replace `path/to/intersphinx_mapping.py` with the actual path
+          # of your intersphinx mapping file.
+          
+          mapping=$(cat source/conf.py)
+
+          # Loop through fetched repositories and check if they are listed in the mapping
+          
           for repo in "${{ steps.list_repos.outputs.result }}"; do
-            # Check if the repository is in the list of stored repositories
-            if [[ ! $stored_repos =~ $repo ]]; then
-              echo "New repository found: $repo"
-              # Perform actions here, such as updating the index.rst file in your central docs repository
-              # Example: echo "- $repo" >> index.rst
+            if [[ ! $mapping =~ "$repo" ]]; then
+              echo "Repository '$repo' is missing from the intersphinx mapping."
+              # Optionally, add logic to update the mapping automatically
             fi
           done
-
-
-      # Add further steps to perform actions based on the comparison results
