@@ -1,7 +1,3 @@
-import ast
-
-# print(intersphinx_mapping.keys())
-
 
 with open('source/conf.py', 'r') as f:
     conf_content = f.read()
