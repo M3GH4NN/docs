@@ -70,7 +70,25 @@ jobs:
 
       - name: Compare Repositories
         run: |
-          declare -p ${{ steps.list_repos.outputs.result }};
+
+
+          # Define the string
+          string=${{ steps.list_repos.outputs.result }}
+
+          # Remove leading and trailing square brackets
+          string="${string#"["}"
+          string="${string%"]"}"
+
+          # Replace commas with spaces
+          string="${string//,/ }"
+
+          # Convert the string to an array
+          declare -a array=($string)
+
+          # Print the array
+          declare -p array
+
+
           for repo in ${{ steps.list_repos.outputs.result }}; do
             if ! echo "${{ steps.extract_mapping.outputs.filtered_mapping }}" | grep -q "$repo"; then
               echo "Repository $repo is missing from Intersphinx Mapping."
