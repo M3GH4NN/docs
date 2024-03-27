@@ -30,9 +30,6 @@ jobs:
           INTERSPHINX_MAPPING=$(grep -A 10 "intersphinx_mapping" source/conf.py | grep -v "intersphinx_mapping" | sed -e 's/^[[:space:]]*//' | tr -d '\n' | sed 's/"/\\"/g')
           echo "INTERSPHINX_MAPPING=\"$INTERSPHINX_MAPPING\"" >> $GITHUB_ENV
         
-    
-      - name: Print Intersphinx Mapping
-        run: echo "${{ env.INTERSPHINX_MAPPING }}"
 
       - name: Compare with Intersphinx Mapping
         id: compare_repos
