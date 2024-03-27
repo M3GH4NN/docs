@@ -58,7 +58,7 @@ jobs:
               org: 'salt-extensions',
               per_page: 100
             });
-            return response.data.map(repo => repo.name).join('\n');
+            return response.data.map(repo => repo.name);
 
       - name: Debug Intersphinx Mapping
         run: |
