@@ -22,6 +22,7 @@ jobs:
         id: extract_mapping
         run: |
           filtered_mapping=$(python -c "
+          import re
           with open('source/conf.py', 'r') as f:
               conf_content = f.read()
           
@@ -32,13 +33,13 @@ jobs:
           # Extract the block
           mapping_block = conf_content[start_idx:end_idx+1]
           
-          # Split the block into lines and remove the line containing intersphinx_mapping
-          lines = mapping_block.split('\n')
-          filtered_lines = [line.strip() for line in lines if 'intersphinx_mapping' not in line]
+          # Extract keys from the block
+          keys = re.findall(r'"([^"]+)"\s*:', mapping_block)
           
-          # Join the lines back together and print
-          filtered_mapping = '\n'.join(filtered_lines)
-          print(filtered_mapping)
+          # Format keys as an array
+          keys_array = str(keys)
+          
+          print(keys_array)
           ")
           
           echo "::set-output name=filtered_mapping::$filtered_mapping"
