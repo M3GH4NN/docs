@@ -40,7 +40,7 @@ jobs:
           filtered_mapping = '\n'.join(filtered_lines)
           print(filtered_mapping)
           ")
-          echo $filtered_mapping
+          echo $filtered_mapping[0]
           
           
           
