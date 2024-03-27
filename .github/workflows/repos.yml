@@ -24,29 +24,21 @@ jobs:
             });
             return response.data.map(repo => repo.name);
       
-      - name: Store Intersphinx Mapping as JSON string
-        id: store_mapping
+      - name: Extract Intersphinx Mapping from conf.py
+        id: extract_mapping
         run: |
-          echo "::set-env name=INTERSPHINX_MAPPING::$(echo '$(cat source/conf.py)' | grep intersphinx_mapping | sed -E 's/.*= ?{(.*)}.*/{\1}/')"
+          INTERSPHINX_MAPPING=$(grep -A 10 "intersphinx_mapping" source/conf.py | grep -v "intersphinx_mapping" | sed -e 's/^[[:space:]]*//')
+          echo "::set-env name=INTERSPHINX_MAPPING::$INTERSPHINX_MAPPING"
     
       - name: Print Intersphinx Mapping
         run: echo "${{ env.INTERSPHINX_MAPPING }}"
 
-      - name: Check Intersphinx Mapping
+      - name: Compare with Intersphinx Mapping
+        id: compare_repos
         run: |
-          echo "Checking intersphinx mapping..."
-
-          # Read the intersphinx mapping from your central docs repository
-          # You'll need to replace `path/to/intersphinx_mapping.py` with the actual path
-          # of your intersphinx mapping file.
-          
-          mapping=$(grep -oP "(?<=intersphinx_mapping = ).*" source/conf.py)
-
-          # Loop through fetched repositories and check if they are listed in the mapping
-          
+          INTERSPHINX_MAPPING="${{ env.INTERSPHINX_MAPPING }}"
           for repo in "${{ steps.list_repos.outputs.result }}"; do
-            if [[ ! $mapping =~ "$repo" ]]; then
-              echo "Repository '$repo' is missing from the intersphinx mapping."
-              # Optionally, add logic to update the mapping automatically
-            fi
+          if [[ ! $INTERSPHINX_MAPPING =~ \"$repo\" ]]; then
+            echo "Repository $repo is missing from Intersphinx Mapping."
+          fi
           done
