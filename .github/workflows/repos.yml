@@ -54,7 +54,7 @@ jobs:
           filtered_mapping = "\\n".join(filtered_lines)
 
           
-          print("::set-output name=filtered_mapping::{}".format(filtered_mapping))
+          echo ("::set-output name=filtered_mapping::{}".format(filtered_mapping))
           ')
         
       
