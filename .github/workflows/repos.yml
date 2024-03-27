@@ -53,28 +53,28 @@ jobs:
             return response.data.map(repo => repo.name);
 
       - name: Compare Repositories
-      run: |
-        intersphinx_mapping=$(python -c "
-        with open('source/conf.py', 'r') as f:
-            conf_content = f.read()
+        run: |
+          intersphinx_mapping=$(python -c "
+          with open('source/conf.py', 'r') as f:
+              conf_content = f.read()
 
-        # Find the start and end of the intersphinx_mapping block
-        start_idx = conf_content.find('intersphinx_mapping')
-        end_idx = conf_content.find('}', start_idx)
+          # Find the start and end of the intersphinx_mapping block
+          start_idx = conf_content.find('intersphinx_mapping')
+          end_idx = conf_content.find('}', start_idx)
 
-        # Extract the block
-        mapping_block = conf_content[start_idx:end_idx+1]
+          # Extract the block
+          mapping_block = conf_content[start_idx:end_idx+1]
 
-        # Split the block into lines and remove the line containing intersphinx_mapping
-        lines = mapping_block.split('\n')
-        filtered_lines = [line.strip() for line in lines if 'intersphinx_mapping' not in line]
+          # Split the block into lines and remove the line containing intersphinx_mapping
+          lines = mapping_block.split('\n')
+          filtered_lines = [line.strip() for line in lines if 'intersphinx_mapping' not in line]
 
-        print('\n'.join(filtered_lines))
-        ")
-        
-        for repo in "${{ steps.list_repos.outputs.result }}"; do
-          if ! echo "$intersphinx_mapping" | grep -q "$repo"; then
-            echo "Repository $repo is missing from Intersphinx Mapping."
-          fi
-        done
+          print('\n'.join(filtered_lines))
+          ")
+          
+          for repo in "${{ steps.list_repos.outputs.result }}"; do
+            if ! echo "$intersphinx_mapping" | grep -q "$repo"; then
+              echo "Repository $repo is missing from Intersphinx Mapping."
+            fi
+          done
 
