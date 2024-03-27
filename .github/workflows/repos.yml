@@ -23,8 +23,8 @@ jobs:
         run: |
           filtered_mapping=$(python -c "
           with open('source/conf.py', 'r') as f:
-              conf_content = f.read()
-          
+            conf_content = f.read()
+                  
           # Find the start and end of the intersphinx_mapping block
           start_idx = conf_content.find('intersphinx_mapping')
           end_idx = conf_content.find('}', start_idx)
@@ -41,7 +41,7 @@ jobs:
           print(filtered_mapping)
           ")
           
-          echo "::set-output name=filtered_mapping::$filtered_mapping"
+          
           
           
         
