@@ -58,7 +58,7 @@ jobs:
               org: 'salt-extensions',
               per_page: 100
             });
-            return response.data.map(repo => repo.name);
+            return response.data.map(repo => repo.name).join('\n');
 
       - name: Debug Intersphinx Mapping
         run: |
@@ -71,12 +71,9 @@ jobs:
       - name: Compare Repositories
         run: |
           for repo in ${{ steps.list_repos.outputs.result }}; do
-          # Remove single quotes from the filtered_mapping using sed
-          filtered_mapping_without_quotes=$(echo "${{ steps.extract_mapping.outputs.filtered_mapping }}" | sed "s/'//g")
-        
-          # Check if the repository exists in the filtered_mapping
-          if ! echo "$filtered_mapping_without_quotes" | grep -q "$repo"; then
+          if ! echo "${{ steps.extract_mapping.outputs.filtered_mapping }}" | grep -q "$repo"; then
             echo "Repository $repo is missing from Intersphinx Mapping."
           fi
           done
+    
     
