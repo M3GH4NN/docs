@@ -70,10 +70,12 @@ jobs:
 
       - name: Compare Repositories
         run: |
-          for repo in ${{ steps.list_repos.outputs.result }}; do
-          if ! echo "${{ steps.extract_mapping.outputs.filtered_mapping }}" | grep -q "$repo"; then
-            echo "Repository $repo is missing from Intersphinx Mapping."
-          fi
+          IFS=$'\n' read -d '' -r -a repos <<< "${{ steps.list_repos.outputs.result }}"
+
+          for repo in "${repos[@]}"; do
+            if ! echo "${{ steps.extract_mapping.outputs.filtered_mapping }}" | grep -q "$repo"; then
+              echo "Repository $repo is missing from Intersphinx Mapping."
+            fi
           done
     
     
