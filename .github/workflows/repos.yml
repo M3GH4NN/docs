@@ -27,7 +27,7 @@ jobs:
       - name: Extract Intersphinx Mapping from conf.py
         id: extract_mapping
         run: |
-          INTERSPHINX_MAPPING=$(grep -A 10 "intersphinx_mapping" source/conf.py | grep -v "intersphinx_mapping" | sed -e 's/^[[:space:]]*//' | tr -d '\n' | sed 's/"/\\"/g')
+          INTERSPHINX_MAPPING=$(grep "intersphinx_mapping" source/conf.py | grep -v "intersphinx_mapping" | sed -e 's/^[[:space:]]*//' | tr -d '\n' | sed 's/"/\\"/g')
           echo "INTERSPHINX_MAPPING=\"$INTERSPHINX_MAPPING\"" >> $GITHUB_ENV
         
 
@@ -37,7 +37,7 @@ jobs:
           INTERSPHINX_MAPPING="${{ env.INTERSPHINX_MAPPING }}"
           REPO_LIST="${{ env.REPO_LIST }}"
     
-          for repo in $REPO_LIST; do
+          for repo in "${{ steps.list_repos.outputs.result }}"; do
           if ! echo "${INTERSPHINX_MAPPING}" | grep -q "\"${repo}\""; then
             echo "Repository $repo is missing from Intersphinx Mapping."
           fi
