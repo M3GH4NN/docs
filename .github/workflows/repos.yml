@@ -70,7 +70,7 @@ jobs:
 
       - name: Compare Repositories
         run: |
-          IFS=$'\n' read -d '' -r -a repos <<< "${{ steps.list_repos.outputs.result }}"
+          IFS=$',' read -d '' -r -a repos <<< "${{ steps.list_repos.outputs.result }}"
 
           for repo in "${repos[@]}"; do
             if ! echo "${{ steps.extract_mapping.outputs.filtered_mapping }}" | grep -q "$repo"; then
