@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v2
+      
       - name: List Repositories
         id: list_repos
         uses: actions/github-script@v4
@@ -24,7 +27,7 @@ jobs:
       - name: List files in source directory
         run: |
           ls -l 
-          
+
       - name: Check Intersphinx Mapping
         run: |
           echo "Checking intersphinx mapping..."
@@ -33,7 +36,7 @@ jobs:
           # You'll need to replace `path/to/intersphinx_mapping.py` with the actual path
           # of your intersphinx mapping file.
           
-          mapping=$(grep -oP "(?<=intersphinx_mapping = ).*" conf.py)
+          mapping=$(grep -oP "(?<=intersphinx_mapping = ).*" source/conf.py)
 
           # Loop through fetched repositories and check if they are listed in the mapping
           
