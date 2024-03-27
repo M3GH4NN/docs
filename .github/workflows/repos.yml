@@ -21,10 +21,24 @@ jobs:
       - name: Extract intersphinx_mapping
         run: |
           python -c "
-          import sys
-          sys.path.append('source')
-          import conf
-          print(conf.intersphinx_mapping)
+          with open('source/conf.py', 'r') as f:
+            conf_content = f.read()
+          
+          # Find the start and end of the intersphinx_mapping block
+          start_idx = conf_content.find('intersphinx_mapping')
+          end_idx = conf_content.find(')', start_idx)
+          
+          # Extract the block
+          mapping_block = conf_content[start_idx:end_idx+1]
+          
+          # Split the block into lines and remove the line containing intersphinx_mapping
+          lines = mapping_block.split('\n')
+          filtered_lines = [line for line in lines if 'intersphinx_mapping' not in line]
+          
+          # Join the lines back together and print
+          filtered_mapping = '\n'.join(filtered_lines)
+          print(filtered_mapping)
+        
           "
       
       - name: List Repositories
