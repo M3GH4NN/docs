@@ -45,10 +45,10 @@ jobs:
           # Extract keys from the dictionary
           filtered_mapping = list(mapping_dict.keys())
           print(filtered_mapping)
-          return filtered_mapping
+          echo "::set-output name=filtered_mapping::$filtered_mapping"
+
           ')
 
-          echo "$filtered_mapping"
 
       
       - name: List Repositories
