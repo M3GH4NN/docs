@@ -24,9 +24,13 @@ jobs:
             });
             return response.data.map(repo => repo.name);
       
-      - name: List files in source directory
+      - name: Store Intersphinx Mapping as JSON string
+        id: store_mapping
         run: |
-          ls -l 
+          echo "::set-env name=INTERSPHINX_MAPPING::$(echo '$(cat source/conf.py)' | grep intersphinx_mapping | sed -E 's/.*= ?{(.*)}.*/{\1}/')"
+    
+      - name: Print Intersphinx Mapping
+        run: echo "${{ env.INTERSPHINX_MAPPING }}"
 
       - name: Check Intersphinx Mapping
         run: |
