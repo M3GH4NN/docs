@@ -53,8 +53,9 @@ jobs:
           # Join the lines back together and print
           filtered_mapping = "\\n".join(filtered_lines)
           ')
-          
-          echo ("::set-output name=filtered_mapping::{}".format(filtered_mapping))
+          echo "$filtered_mapping"
+
+        
         
       
       - name: List Repositories
