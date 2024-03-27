@@ -35,8 +35,13 @@ jobs:
         id: compare_repos
         run: |
           INTERSPHINX_MAPPING="${{ env.INTERSPHINX_MAPPING }}"
-          for repo in "${{ steps.list_repos.outputs.result }}"; do
-          if [[ ! $INTERSPHINX_MAPPING =~ \"$repo\" ]]; then
+          REPO_LIST="${{ env.REPO_LIST }}"
+    
+          for repo in $REPO_LIST; do
+          if ! echo "${INTERSPHINX_MAPPING}" | grep -q "\"${repo}\""; then
             echo "Repository $repo is missing from Intersphinx Mapping."
           fi
           done
+        env:
+          INTERSPHINX_MAPPING: ${{ env.INTERSPHINX_MAPPING }}
+          REPO_LIST: ${{ env.REPO_LIST }}
