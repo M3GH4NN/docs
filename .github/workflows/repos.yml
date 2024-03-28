@@ -98,15 +98,15 @@ jobs:
       - name: Add Missing Repository
         if: steps.extract_mapping.outputs.filtered_mapping
         env:
-          REPO_NAME: ${{ env.REPO_NAME }}
-          REPO_URL: ${{ env.REPO_URL }}
+          REPO_NAME: "saltext-tsl"
+          REPO_URL: "https://m3gh4nn.github.io/dummy-repo/"
         run: |
           # Read the content of conf.py
           python -c '
           import os
 
-          repo_name = os.environ.get('REPO_NAME')
-          repo_url = os.environ.get('REPO_URL')
+          repo_name = os.environ('REPO_NAME')
+          repo_url = os.environ('REPO_URL')
           # Read the content of conf.py
           with open("source/conf.py", "r") as f:
             conf_content = f.read()
