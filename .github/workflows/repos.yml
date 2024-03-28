@@ -127,6 +127,7 @@ jobs:
 
           # Add the missing repository to the mapping dictionary
           mapping_dict["$REPO_NAME"] = ("$REPO_URL", None)
+          print(mapping_dict)
 
           # Reconstruct the mapping block
           new_mapping_block = "intersphinx_mapping = {\n"
