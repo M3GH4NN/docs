@@ -132,6 +132,8 @@ jobs:
           # Reconstruct the mapping block
           new_mapping_block = "intersphinx_mapping = " + repr(mapping_dict)
 
+          print(new_mapping_block)
+
 
           # # Replace the old mapping block with the new one
           # conf_content = conf_content[:start_idx] + new_mapping_block + conf_content[end_idx + 1:]
