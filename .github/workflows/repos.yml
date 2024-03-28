@@ -146,5 +146,5 @@ jobs:
               file.write(new_mapping_block)
               print("Write operation successful.")
           except Exception as e:
-          print(f"Error occurred: {e}")
+            print(f"Error occurred: {e}")
           '
