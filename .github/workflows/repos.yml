@@ -124,7 +124,6 @@ jobs:
 
           # Parse the dictionary string
           mapping_dict = eval(dictionary_string)
-          print(type(mapping_dict))
 
           # Add the missing repository to the mapping dictionary
           mapping_dict[repo_name] = (repo_url, None)
@@ -134,7 +133,7 @@ jobs:
           new_mapping_block = "intersphinx_mapping = {\n"
           for key, value in mapping_dict.items():
               value_str = repr(value)
-              new_mapping_block += f'    "{key}": {value},\n'
+              new_mapping_block += f'    "{key}": {value_str},\n'
           new_mapping_block += "}"
 
           # Replace the old mapping block with the new one
