@@ -129,17 +129,16 @@ jobs:
           mapping_dict[repo_name] = (repo_url, None)
           print(mapping_dict)
 
-          # Reconstruct the mapping block
-          new_mapping_block = "intersphinx_mapping = {\n"
-          for key, value in mapping_dict.items():
-              value_str = str(value)
-              new_mapping_block += f'    "{key}": {value_str},\n'
-          new_mapping_block += "}"
+          # # Reconstruct the mapping block
+          # new_mapping_block = "intersphinx_mapping = {\n"
+          # for key, value in mapping_dict.items():
+          #     new_mapping_block += f'    "{key}": {value},\n'
+          # new_mapping_block += "}"
 
-          # Replace the old mapping block with the new one
-          conf_content = conf_content[:start_idx] + new_mapping_block + conf_content[end_idx + 1:]
+          # # Replace the old mapping block with the new one
+          # conf_content = conf_content[:start_idx] + new_mapping_block + conf_content[end_idx + 1:]
 
-          # Write the modified content back to conf.py
-          with open("source/conf.py", "w") as f:
-            f.write(conf_content)
+          # # Write the modified content back to conf.py
+          # with open("source/conf.py", "w") as f:
+          #   f.write(conf_content)
           '
