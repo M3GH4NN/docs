@@ -4,14 +4,13 @@ on:
   push:
     branches:
       - main  # Adjust this according to your default branch
-env:
-  REPO_NAME: "saltext-tsl"
-  REPO_URL: "https://m3gh4nn.github.io/dummy-repo/"
 
 jobs:
   check_for_new_repos:
     runs-on: ubuntu-latest
-
+    env:
+      REPO_NAME: "saltext-tsl"
+      REPO_URL: "https://m3gh4nn.github.io/dummy-repo/"
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
