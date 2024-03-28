@@ -127,7 +127,7 @@ jobs:
 
           # Add the missing repository to the mapping dictionary
           mapping_dict[repo_name] = (repo_url, None)
-          print(mapping_dict)
+          # print(mapping_dict)
 
           # Reconstruct the mapping block
           new_mapping_block = "intersphinx_mapping = " + repr(mapping_dict)
@@ -136,9 +136,9 @@ jobs:
 
 
           # # Replace the old mapping block with the new one
-          # conf_content = conf_content[:start_idx] + new_mapping_block + conf_content[end_idx + 1:]
+          conf_content = conf_content[:start_idx] + new_mapping_block + conf_content[end_idx + 1:]
 
           # # Write the modified content back to conf.py
-          # with open("source/conf.py", "w") as f:
-          #   f.write(conf_content)
+          with open("source/conf.py", "w") as f:
+            f.write(conf_content)
           '
