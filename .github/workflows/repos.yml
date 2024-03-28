@@ -137,7 +137,7 @@ jobs:
 
           # # Replace the old mapping block with the new one
           conf_content = conf_content[:start_idx] + new_mapping_block + conf_content[end_idx + 1:]
-
+          print(conf_content)
           # # Write the modified content back to conf.py
           with open("source/conf.py", "w") as f:
             f.write(conf_content)
