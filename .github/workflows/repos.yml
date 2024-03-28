@@ -8,9 +8,7 @@ on:
 jobs:
   check_for_new_repos:
     runs-on: ubuntu-latest
-    env:
-      REPO_NAME: "saltext-tsl"
-      REPO_URL: "https://m3gh4nn.github.io/dummy-repo/"
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -99,6 +97,9 @@ jobs:
     
       - name: Add Missing Repository
         if: steps.extract_mapping.outputs.filtered_mapping
+        env:
+          REPO_NAME: "saltext-tsl"
+          REPO_URL: "https://m3gh4nn.github.io/dummy-repo/"
         run: |
           # Read the content of conf.py
           python -c '
