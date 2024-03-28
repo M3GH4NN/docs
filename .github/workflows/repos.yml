@@ -104,6 +104,9 @@ jobs:
           # Read the content of conf.py
           python -c '
           import os
+
+          repo_name = os.environ.get('REPO_NAME')
+          repo_url = os.environ.get('REPO_URL')
           # Read the content of conf.py
           with open("source/conf.py", "r") as f:
             conf_content = f.read()
@@ -127,7 +130,7 @@ jobs:
           print(type(mapping_dict))
 
           # Add the missing repository to the mapping dictionary
-          mapping_dict[os.environ['REPO_NAME']] = (os.environ['REPO_URL'], None)
+          mapping_dict[repo_name] = (repo_url, None)
           print(mapping_dict)
 
           # Reconstruct the mapping block
