@@ -125,7 +125,7 @@ jobs:
           print(type(mapping_dict))
 
           # Add the missing repository to the mapping dictionary
-          mapping_dict["$REPO_NAME"] = ("$REPO_URL", None)
+          mapping_dict[os.environ['REPO_NAME']] = (os.environ['REPO_URL'], None)
           print(mapping_dict)
 
           # Reconstruct the mapping block
