@@ -102,6 +102,7 @@ jobs:
         if: steps.extract_mapping.outputs.filtered_mapping
         run: |
           # Read the content of conf.py
+          python -c '
           with open("source/conf.py", "r") as f:
             conf_content = f.read()
   
@@ -137,3 +138,4 @@ jobs:
           # Write the modified content back to conf.py
           with open("source/conf.py", "w") as f:
             f.write(conf_content)
+          '
