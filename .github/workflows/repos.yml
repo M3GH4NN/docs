@@ -130,10 +130,11 @@ jobs:
           print(mapping_dict)
 
           # Reconstruct the mapping block
-          new_mapping_block = "intersphinx_mapping = {\n"
+          # new_mapping_block = "intersphinx_mapping = {\n"
+          new_mapping_block = "intersphinx_mapping = " + repr(mapping_dict)
 
-          for key, value in mapping_dict.items():
-              new_mapping_block += f'"{key}": ({value}, None),\n'
+          # for key, value in mapping_dict.items():
+              # new_mapping_block += f'"{key}": ({value}, None),\n'
           # new_mapping_block += "}"
 
           # # Replace the old mapping block with the new one
