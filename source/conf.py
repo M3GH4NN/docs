@@ -153,7 +153,6 @@ intersphinx_mapping = {
     "community": ("https://m3gh4nn.github.io/dummy-repo/", None),
     "salt-describe": ("https://m3gh4nn.github.io/dummy-repo/", None),
     "saltext-vector": ("https://m3gh4nn.github.io/dummy-repo/", None),
-  
 }
 
 # ----- Autodoc Config ---------------------------------------------------------------------------------------------->
