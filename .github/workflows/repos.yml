@@ -123,9 +123,10 @@ jobs:
 
           # Parse the dictionary string
           mapping_dict = eval(dictionary_string)
-          print(mapping_dict)
+          print(type(mapping_dict))
 
-        
+          # Add the missing repository to the mapping dictionary
+          mapping_dict["$REPO_NAME"] = ("$REPO_URL", None)
 
           # Reconstruct the mapping block
           new_mapping_block = "intersphinx_mapping = {\n"
