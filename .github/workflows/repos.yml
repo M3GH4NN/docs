@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main  # Adjust this according to your default branch
+env:
+  REPO_NAME: "saltext-tsl"
+  REPO_URL: "https://m3gh4nn.github.io/dummy-repo/"
 
 jobs:
   check_for_new_repos:
@@ -71,7 +74,6 @@ jobs:
       - name: Compare Repositories
         run: |
 
-
           # Define the string
           string=${{ steps.list_repos.outputs.result }}
 
@@ -85,12 +87,8 @@ jobs:
           # Convert the string to an array
           declare -a array=($string)
 
-          # Print the array
+          # Print the array for testing
           declare -p array
-
-
-          # Convert the string to an array
-          declare -a repos=($string)
 
           # Loop through the array
           for repo in "${repos[@]}"; do
@@ -100,4 +98,42 @@ jobs:
               fi
           done
     
-    
+      - name: Add Missing Repository
+        if: steps.extract_mapping.outputs.filtered_mapping
+        run: |
+          # Read the content of conf.py
+          with open("source/conf.py", "r") as f:
+            conf_content = f.read()
+  
+          # Find the start and end of the intersphinx_mapping block
+          start_idx = conf_content.find("intersphinx_mapping")
+          end_idx = conf_content.find("}", start_idx)
+  
+          # Extract the block
+          mapping_block = conf_content[start_idx:end_idx + 1]
+  
+          # Find the start and end of the dictionary
+          start_idx = mapping_block.find("{")
+          end_idx = mapping_block.rfind("}")
+  
+          # Extract the dictionary part
+          dictionary_string = mapping_block[start_idx:end_idx + 1]
+  
+          # Parse the dictionary string
+          mapping_dict = eval(dictionary_string)
+  
+          # Add the missing repository to the mapping dictionary
+          mapping_dict["$REPO_NAME"] = ("$REPO_URL", None)
+  
+          # Reconstruct the mapping block
+          new_mapping_block = "intersphinx_mapping = {\n"
+          for key, value in mapping_dict.items():
+              new_mapping_block += f'    "{key}": {value},\n'
+          new_mapping_block += "}"
+  
+          # Replace the old mapping block with the new one
+          conf_content = conf_content[:start_idx] + new_mapping_block + conf_content[end_idx + 1:]
+  
+          # Write the modified content back to conf.py
+          with open("source/conf.py", "w") as f:
+            f.write(conf_content)
