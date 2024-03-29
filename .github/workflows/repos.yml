@@ -3,7 +3,7 @@ name: Check for New Repositories
 on:
   push:
     branches:
-      - main  # Adjust this according to your default branch
+      - update-docs  # Adjust this according to your default branch
 
 jobs:
   check_for_new_repos:
@@ -148,3 +148,19 @@ jobs:
           except Exception as e:
             print(f"Error occurred: {e}")
           '
+      - name: Commit changes
+        run: |
+          git config --global user.email "github-actions@example.com"
+          git config --global user.name "GitHub Actions"
+          git add source/conf.py
+          git commit -m "Update intersphinx_mapping in conf.py"
+          
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: feature/update-mapping
+          title: Update intersphinx_mapping in conf.py
+          body: |
+            This PR updates the intersphinx_mapping in conf.py file to include missing repositories.
+            Please review and merge.
