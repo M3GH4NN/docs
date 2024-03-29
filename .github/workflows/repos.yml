@@ -98,38 +98,47 @@ jobs:
       - name: Add Missing Repository
         if: steps.extract_mapping.outputs.filtered_mapping
         run: | 
-          # Set the repository name and URL
-          repo_name="saltext-tsl"
-          repo_url="https://m3gh4nn.github.io/dummy-repo/"
-      
-          # Read the content of conf.py
-          conf_content=$(<source/conf.py)
-      
-          # Find the start and end of the intersphinx_mapping block
-          start_idx=$(echo "$conf_content" | grep -n "intersphinx_mapping" | cut -d':' -f1)
-          end_idx=$(echo "$conf_content" | grep -n "^}" | grep -A1 "^$start_idx:" | tail -n1 | cut -d':' -f1)
-      
-          # Extract the existing mapping block
-          mapping_block=$(echo "$conf_content" | sed -n "${start_idx},${end_idx}p")
-      
-          # Parse the mapping block into a dictionary
-          eval "$(echo "$mapping_block" | sed -e 's/intersphinx_mapping *= *{\(.*\)}$/\1/')"
-      
-          # Add the missing repository to the mapping dictionary
-          eval "$repo_name=('$repo_url', None)"
-      
-          # Convert the mapping dictionary back to string representation
-          new_mapping_block="intersphinx_mapping = {"
-          for key in "${!mapping_dict[@]}"; do
-            new_mapping_block="$new_mapping_block\n    '$key': ${mapping_dict[$key]},"
+          # Define the string
+          string=${{ steps.list_repos.outputs.result }}
+
+          # Remove leading and trailing square brackets
+          string="${string#"["}"
+          string="${string%"]"}"
+
+          # Replace commas with spaces
+          string="${string//,/ }"
+
+          # Convert the string to an array
+          declare -a array=($string)
+
+          # Print the array
+          declare -p array
+
+          # Convert the string to an array
+          declare -a repos=($string)
+
+          # Loop through the array
+          for repo in "${repos[@]}"; do
+              # Check if the repo is missing from the filtered mapping
+              if ! echo "${{ steps.extract_mapping.outputs.filtered_mapping }}" | grep -q "$repo"; then
+                  echo "Repository $repo is missing from Intersphinx Mapping."
+
+                  # Add missing repository to conf.py
+                  awk -v repo_name="$repo" -v repo_url="https://github.com/saltstack/salt" '
+                    BEGIN { found = 0 } # Initialize a variable to track if the block is found
+                    /intersphinx_mapping/ { # If we find the intersphinx_mapping block
+                        found = 1            # Set found flag to true
+                        print                  # Print the line as it is
+                        next                   # Move to the next line
+                    }
+                    found && /^}/ {            # If the closing brace of the block is found
+                        print "    \"" repo_name "\": (\"" repo_url "\", None),"
+                        found = 0            # Reset the found flag
+                    }
+                    { print }                # Print all lines
+                  ' source/conf.py > source/temp.py && mv source/temp.py source/conf.py
+              fi
           done
-          new_mapping_block="$new_mapping_block\n}"
-      
-          # Replace the old mapping block with the new one
-          updated_conf_content=$(echo "$conf_content" | sed -e "${start_idx},${end_idx}s/.*/$new_mapping_block/")
-      
-          # Write the updated content back to the file
-          echo "$updated_conf_content" > source/conf.py
           
       - name: Commit changes
         run: |
