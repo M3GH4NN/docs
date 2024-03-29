@@ -143,7 +143,7 @@ jobs:
           # Attempt to write to the file
           try:
             with open("source/conf.py", "w") as file:
-              file.write(new_mapping_block)
+              file.write(conf_content)
               print("Write operation successful.")
           except Exception as e:
             print(f"Error occurred: {e}")
