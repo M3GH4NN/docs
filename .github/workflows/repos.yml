@@ -148,10 +148,11 @@ jobs:
           git commit -m "Update intersphinx_mapping in conf.py"
           
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.TOKEN }}
-          base: main
+          base: update-docs
+          branch: main
           title: Update intersphinx_mapping in conf.py
           body: |
             This PR updates the intersphinx_mapping in conf.py file to include missing repositories.
