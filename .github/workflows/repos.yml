@@ -151,7 +151,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.TOKEN }}
-          branch: feature/update-mapping
+          branch: main
           title: Update intersphinx_mapping in conf.py
           body: |
             This PR updates the intersphinx_mapping in conf.py file to include missing repositories.
