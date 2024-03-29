@@ -98,56 +98,39 @@ jobs:
       - name: Add Missing Repository
         if: steps.extract_mapping.outputs.filtered_mapping
         run: | 
+          # Set the repository name and URL
+          repo_name="saltext-tsl"
+          repo_url="https://m3gh4nn.github.io/dummy-repo/"
+      
           # Read the content of conf.py
-          python -c '
-          import os
-
-          repo_name = "saltext-tsl"
-          repo_url = "https://m3gh4nn.github.io/dummy-repo/"
-          # Read the content of conf.py
-          with open("source/conf.py", "r") as f:
-            conf_content = f.read()
-
+          conf_content=$(<source/conf.py)
+      
           # Find the start and end of the intersphinx_mapping block
-          start_idx = conf_content.find("intersphinx_mapping")
-          end_idx = conf_content.find("}", start_idx)
-
-          # Extract the block
-          mapping_block = conf_content[start_idx:end_idx + 1]
-
-          # Find the start and end of the dictionary
-          start_idx = mapping_block.find("{")
-          end_idx = mapping_block.rfind("}")
-
-          # Extract the dictionary part
-          dictionary_string = mapping_block[start_idx:end_idx + 1]
-
-          # Parse the dictionary string
-          mapping_dict = eval(dictionary_string)
-
+          start_idx=$(echo "$conf_content" | grep -n "intersphinx_mapping" | cut -d':' -f1)
+          end_idx=$(echo "$conf_content" | grep -n "^}" | grep -A1 "^$start_idx:" | tail -n1 | cut -d':' -f1)
+      
+          # Extract the existing mapping block
+          mapping_block=$(echo "$conf_content" | sed -n "${start_idx},${end_idx}p")
+      
+          # Parse the mapping block into a dictionary
+          eval "$(echo "$mapping_block" | sed -e 's/intersphinx_mapping *= *{\(.*\)}$/\1/')"
+      
           # Add the missing repository to the mapping dictionary
-          mapping_dict[repo_name] = (repo_url, None)
-          # print(mapping_dict)
-
-          # Reconstruct the mapping block
-          new_mapping_block = "intersphinx_mapping = " + repr(mapping_dict)
-
-          print(new_mapping_block)
-
-
+          eval "$repo_name=('$repo_url', None)"
+      
+          # Convert the mapping dictionary back to string representation
+          new_mapping_block="intersphinx_mapping = {"
+          for key in ${!mapping_dict[@]}; do
+            new_mapping_block="$new_mapping_block\n    '$key': ${mapping_dict[$key]},"
+          done
+          new_mapping_block="$new_mapping_block\n}"
+      
           # Replace the old mapping block with the new one
-          conf_content = conf_content[:start_idx] + new_mapping_block + conf_content[end_idx + 1:]
-
-          print(conf_content)
-
-          # Attempt to write to the file
-          try:
-            with open("source/conf.py", "w") as file:
-              file.write(conf_content)
-              print("Write operation successful.")
-          except Exception as e:
-            print(f"Error occurred: {e}")
-          '
+          updated_conf_content=$(echo "$conf_content" | sed -e "/intersphinx_mapping *= *{/,/^}/c$new_mapping_block")
+      
+          # Write the updated content back to the file
+          echo "$updated_conf_content" > source/conf.py
+          
       - name: Commit changes
         run: |
           git config --global user.email "github-actions@example.com"
