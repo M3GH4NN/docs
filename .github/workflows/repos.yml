@@ -97,7 +97,7 @@ jobs:
     
       - name: Add Missing Repository
         if: steps.extract_mapping.outputs.filtered_mapping
-        run: |
+        run: | 
           # Read the content of conf.py
           python -c '
           import os
