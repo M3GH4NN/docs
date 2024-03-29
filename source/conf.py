@@ -153,16 +153,12 @@ intersphinx_mapping = {
     "community": ("https://m3gh4nn.github.io/dummy-repo/", None),
     "salt-describe": ("https://m3gh4nn.github.io/dummy-repo/", None),
     "saltext-vector": ("https://m3gh4nn.github.io/dummy-repo/", None),
-    "saltext-tsl": ("https://github.com/saltstack/salt", None),
 }
 
 # ----- Autodoc Config ---------------------------------------------------------------------------------------------->
 autodoc_default_options = {"member-order": "bysource"}
 autodoc_mock_imports = ["salt"]
 # <---- Autodoc Config -----------------------------------------------------------------------------------------------
-
-
-
 
 def setup(app):
     app.add_crossref_type(
