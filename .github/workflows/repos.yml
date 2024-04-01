@@ -151,7 +151,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.TOKEN }}
-          branch: update-docs
+          branch: update-mapping
           base: main
           title: Update intersphinx_mapping in conf.py
           body: |
