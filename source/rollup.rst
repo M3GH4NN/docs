@@ -12,7 +12,6 @@ Salt Prometheus
 ----------------
 For more information about the Dummy extension, refer to the :doc:`saltext-prometheus:all` documentation.
 
-
 Dummy Extension
 ----------------
 

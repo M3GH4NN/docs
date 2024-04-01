@@ -156,6 +156,4 @@ jobs:
           title: Update intersphinx_mapping in conf.py
           body: |
             This PR updates the intersphinx_mapping in conf.py file to include missing repositories.
-            Please review and merge
-
-            #TODO: after merge, another sphinx publish needs to be done
+            Please review and merge.
