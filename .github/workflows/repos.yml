@@ -144,7 +144,7 @@ jobs:
         run: |
           git config --global user.email "github-actions@example.com"
           git config --global user.name "GitHub Actions"
-          git add source/conf.py
+          git add source/
           git commit -m "Update intersphinx_mapping in conf.py"
           
       - name: Create Pull Request
