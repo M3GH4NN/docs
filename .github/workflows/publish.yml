@@ -36,4 +36,4 @@ jobs:
 
       - name: Build Documentation
         run: |
-          poetry run sphinx-build -b html source build
+          sphinx-build -b html source .
