@@ -49,6 +49,9 @@ jobs:
           sphinx-build -b html source .
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3    
+        with:
+          name: docs
+          path: .
 
   # Single deploy job
   deploy:
