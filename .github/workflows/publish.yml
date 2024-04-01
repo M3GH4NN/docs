@@ -50,7 +50,7 @@ jobs:
         run: |
           sphinx-build -b html source .
 
-  # Single deploy job since we're just deploying
+  # Single deploy job
   deploy:
     environment:
       name: github-pages
