@@ -1,0 +1,28 @@
+name: Build Sphinx HTML
+
+on:
+  push:
+    branches:
+      - main  # Adjust this according to your default branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Sphinx
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U sphinx
+
+      - name: Build HTML
+        run: |
+            sphinx-build -b html source/ .
