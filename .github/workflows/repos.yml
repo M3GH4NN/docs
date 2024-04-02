@@ -144,7 +144,7 @@ jobs:
         run: |
           git config --global user.email "github-actions@example.com"
           git config --global user.name "GitHub Actions"
-          git add source/
+          git add source/conf.py
           git commit -m "Update intersphinx_mapping in conf.py"
           
       - name: Create Pull Request
@@ -156,4 +156,5 @@ jobs:
           title: Update intersphinx_mapping in conf.py
           body: |
             This PR updates the intersphinx_mapping in conf.py file to include missing repositories.
-            Please review and merge.
+            Please review and merge
+
