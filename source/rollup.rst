@@ -10,12 +10,12 @@ You can explore documentation from other repositories below.
 
 Salt Moosefs
 ----------------
-For more information about the Dummy extension, refer to the :doc:`saltext-moosefs:all` documentation.
+For more information about the Dummy extension, refer to the :doc:`saltext-moosefs:index` documentation.
 
 
 Salt Prometheus
 ----------------
-For more information about the Dummy extension, refer to the :doc:`saltext-prometheus:all` documentation.
+For more information about the Dummy extension, refer to the :doc:`saltext-prometheus:index` documentation.
 
 Dummy Extension
 ----------------

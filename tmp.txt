@@ -1,0 +1,8 @@
+std:doc
+    index                                    Welcome to My Documentation!            : index.html
+    rollup                                   Roll-up Page                            : rollup.html
+std:label
+    genindex                                 Index                                   : genindex.html
+    modindex                                 Module Index                            : py-modindex.html
+    py-modindex                              Python Module Index                     : py-modindex.html
+    search                                   Search Page                             : search.html
