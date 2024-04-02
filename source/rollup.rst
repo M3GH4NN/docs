@@ -8,6 +8,11 @@ Extensions
 
 You can explore documentation from other repositories below.
 
+Salt Moosefs
+----------------
+For more information about the Dummy extension, refer to the :doc:`saltext-moosefs:all` documentation.
+
+
 Salt Prometheus
 ----------------
 For more information about the Dummy extension, refer to the :doc:`saltext-prometheus:all` documentation.
