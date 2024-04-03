@@ -6,7 +6,7 @@ Welcome to the central documentation roll-up page.
 Extensions
 ----------
 
-You can explore documentation from other repositories below.
+You can explore documentation from other repositories below!
 
 
 Dummy Extension
