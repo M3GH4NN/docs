@@ -8,14 +8,6 @@ Extensions
 
 You can explore documentation from other repositories below.
 
-Salt Moosefs
-----------------
-For more information about the Dummy extension, refer to the :doc:`saltext-moosefs:all` documentation.
-
-
-Salt Prometheus
-----------------
-For more information about the Dummy extension, refer to the :doc:`saltext-prometheus:all` documentation.
 
 Dummy Extension
 ----------------
@@ -41,4 +33,4 @@ For more information about the Salt extension, refer to the :doc:`salt:contents`
 AzureRM Extension
 -----------------
 
-For more information about the AzureRM extension, refer to the :doc:`azurerm:index` documentation.
+For more information about the AzureRM extension, refer to the :doc:`saltext-azurerm:index` documentation.
