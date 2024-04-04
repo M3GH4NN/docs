@@ -146,6 +146,8 @@ jobs:
                     # Print all lines
                     { print } 
                   ' source/conf.py > source/temp.py && mv source/temp.py source/conf.py
+                  # Output the added repository name
+                  echo "::set-output name=repo_name::$repo"
               fi
           done
       
@@ -156,8 +158,6 @@ jobs:
           code_to_insert="- **${{ steps.add_repos.outputs.result }} Extension**
         
           Description of the ${{ steps.add_repos.outputs.result }} extension.
-        
-          For more information about the ${{ steps.add_repos.outputs.result }} extension, refer to the :doc:`${{ steps.add_repos.outputs.result }}:index` documentation."
         
           # Sort the lines alphabetically (excluding the line to insert)
           sorted_content=$(grep -v "$code_to_insert" "$rst_file" | sort)
