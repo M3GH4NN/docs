@@ -6,7 +6,7 @@ This is the index page.
 .. toctree::
    :maxdepth: 2
 
-   rollup
+   extensions
 
 Indices and tables
 ==================
