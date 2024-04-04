@@ -164,9 +164,6 @@ jobs:
         
           # Insert the code after the Extensions section and sorted extensions
           sed -i '/Extensions/a '"$code_to_insert"'' "$rst_file" <<< "$sorted_content"
-        # Ensure this step runs after the previous steps
-        needs: add_repos  # Adjust this according to the step name
-        
 
       - name: Commit changes
         run: |
