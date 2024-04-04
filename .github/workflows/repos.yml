@@ -155,17 +155,16 @@ jobs:
         run: |
           # Define the file path and code to insert
           rst_file="source/extensions.rst"
-          code_to_insert="- **${{ steps.add_repos.outputs.result }} Extension**
-        
-          Description of the ${{ steps.add_repos.outputs.result }} extension.
-        
+          code_to_insert="- **${{ steps.add_repos.outputs.repo_name }} Extension**
+          
+          Description of the ${{ steps.add_repos.outputs.repo_name }} extension.
+          
           # Sort the lines alphabetically (excluding the line to insert)
           sorted_content=$(grep -v "$code_to_insert" "$rst_file" | sort)
-        
+          
           # Insert the code after the Extensions section and sorted extensions
-          sed -i '/Extensions/a '"$code_to_insert"'' "$rst_file" <<< "$sorted_content"
-        
-
+          echo "$sorted_content" | sed '/Extensions/a '"$code_to_insert"'' > temp_file && mv temp_file "$rst_file"
+  
       - name: Commit changes
         run: |
           git config --global user.email "github-actions@example.com"
