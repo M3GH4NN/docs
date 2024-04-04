@@ -1,21 +1,12 @@
 Salt Extensions Page
 =====================
 
-Welcome to the Salt Extensions page.
+Welcome to the Salt Extensions page. 
+- **saltext-tsl Extension**  
+  Description of the saltext-tsl extension.  
+- **saltext-netbox Extension**  
+  Description of the saltext-netbox extension.  
 
-Extensions
-----------
-
-You can explore documentation from other Salt Extensions below!
-
-
-    - **saltext-tsl Extension**    
-
-    Description of the saltext-tsl extension.    
-
-    - **saltext-netbox Extension**    
-
-    Description of the saltext-netbox extension.    
 
 - **Python Extension**
 
