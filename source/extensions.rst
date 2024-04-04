@@ -3,6 +3,7 @@ Salt Extensions Page
 
 Welcome to the Salt Extensions page. 
 
+
 - **Python Extension**
 
   Description of the Python extension.
