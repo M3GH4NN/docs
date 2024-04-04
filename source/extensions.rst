@@ -8,6 +8,15 @@ Extensions
 
 You can explore documentation from other Salt Extensions below!
 
+
+    - **saltext-tsl Extension**    
+
+    Description of the saltext-tsl extension.    
+
+    - **saltext-netbox Extension**    
+
+    Description of the saltext-netbox extension.    
+
 - **Python Extension**
 
   Description of the Python extension.
@@ -31,3 +40,4 @@ You can explore documentation from other Salt Extensions below!
   Description of the AzureRM extension.
 
   For more information about the AzureRM extension, refer to the :doc:`saltext-azurerm:index` documentation.
+
