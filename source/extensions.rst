@@ -2,7 +2,32 @@ Salt Extensions Page
 =====================
 
 Welcome to the Salt Extensions page. 
+- **saltext-tsl Extension**
 
+Description of the saltext-tsl extension.
+
+- **saltext-netbox Extension**
+
+Description of the saltext-netbox extension.
+
+
+
+
+- **saltext-tsl Extension**
+
+Description of the saltext-tsl extension.
+
+- **saltext-netbox Extension**
+
+Description of the saltext-netbox extension.
+
+- **saltext-tsl Extension**
+
+Description of the saltext-tsl extension.
+
+- **saltext-netbox Extension**
+
+Description of the saltext-netbox extension.
 
 - **Python Extension**
 
@@ -27,3 +52,4 @@ Welcome to the Salt Extensions page.
   Description of the AzureRM extension.
 
   For more information about the AzureRM extension, refer to the :doc:`saltext-azurerm:index` documentation.
+
