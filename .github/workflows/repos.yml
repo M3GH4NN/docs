@@ -162,7 +162,7 @@ jobs:
               extensions+="\\n
               - **${repo_name} Extension**\\
               \\n
-              Description of the ${repo_name} extension.\\n
+              Description of the ${repo_name} extension.\\
               "
           done
         
