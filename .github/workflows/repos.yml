@@ -159,7 +159,7 @@ jobs:
       
           # Loop through the repository names to generate extension entries
           for repo_name in $repo_names; do
-            extensions+="\n- **${repo_name} Extension**\\n\\nDescription of the ${repo_name} extension.\\n\\"
+            extensions+="\\n- **${repo_name} Extension**\\n\\nDescription of the ${repo_name} extension.\\n\\"
           done
       
           # Insert the code after the introductory text
