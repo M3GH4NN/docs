@@ -161,7 +161,7 @@ jobs:
           for repo_name in $repo_names; do
               extensions+="\\n
               - **${repo_name} Extension**\\
-              \\
+              \\n
               Description of the ${repo_name} extension.\\
               "
           done
