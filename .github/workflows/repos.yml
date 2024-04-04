@@ -111,12 +111,6 @@ jobs:
           string="${string//,/ }"
 
           # Convert the string to an array
-          declare -a array=($string)
-
-          # Print the array
-          declare -p array
-
-          # Convert the string to an array
           declare -a repos=($string)
 
           # Loop through the array
@@ -155,11 +149,26 @@ jobs:
         run: |
           # Define the file path and code to insert
           rst_file="source/extensions.rst"
-          code_to_insert="- **${{ steps.add_repos.outputs.repo_name }} Extension**
-          
-          Description of the ${{ steps.add_repos.outputs.repo_name }} extension.
-          
-          echo "$sorted_content" | sed "/^Extensions$/a ${code_to_insert}" > temp_file && mv temp_file "$rst_file"
+          repo_name="${{ steps.add_repos.outputs.result }}"
+          code_to_insert="\\
+            - **${repo_name} Extension**\\
+            \\
+            Description of the ${repo_name} extension.\\
+          "
+    
+          # Insert the code after the Extensions section header
+          awk -v code="$code_to_insert" '
+            BEGIN { 
+              RS = ""; 
+              ORS = "\n\n"; 
+              FS = "\n"; 
+            } 
+            { 
+              if ($1 == "Extensions") 
+                print $0 code; 
+              else 
+                print $0; 
+            }' "$rst_file" > temp_file && mv temp_file "$rst_file"
 
 
 
