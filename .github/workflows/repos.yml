@@ -3,7 +3,7 @@ name: Check for New Repositories
 on:
   push:
     branches:
-      - update-docs  # Adjust this according to your default branch
+      - new-repo-check  # Adjust this according to your default branch
 
 jobs:
   check_for_new_repos:
@@ -69,6 +69,7 @@ jobs:
           echo "Repos: ${{ steps.list_repos.outputs.result }}"    
 
       - name: Compare Repositories
+        id: compare_repos
         run: |
 
           # Define the string
@@ -96,6 +97,7 @@ jobs:
           done
     
       - name: Add Missing Repository
+        id: add_repos
         if: steps.extract_mapping.outputs.filtered_mapping
         run: | 
           # Define the string
@@ -125,21 +127,47 @@ jobs:
 
                   # Add missing repository to conf.py
                   awk -v repo_name="$repo" -v repo_url="https://github.com/saltstack/salt" '
-                    BEGIN { found = 0 } # Initialize a variable to track if the block is found
-                    /intersphinx_mapping/ { # If we find the intersphinx_mapping block
-                        found = 1            # Set found flag to true
-                        print                  # Print the line as it is
-                        next                   # Move to the next line
+                    # Initialize a variable to track if the block is found
+                    BEGIN { found = 0 } 
+                    # If we find the intersphinx_mapping block
+                    /intersphinx_mapping/ { 
+                        # Set found flag to true
+                        found = 1            
+                        print
+                        # Move to the next line
+                        next     
                     }
-                    found && /^}/ {            # If the closing brace of the block is found
+                    # If the closing brace of the block is found
+                    found && /^}/ {  
                         print "    \"" repo_name "\": (\"" repo_url "\", None),"
-                        found = 0            # Reset the found flag
+                        # Reset the found flag
+                        found = 0 
                     }
-                    { print }                # Print all lines
+                    # Print all lines
+                    { print } 
                   ' source/conf.py > source/temp.py && mv source/temp.py source/conf.py
               fi
           done
-          
+      
+      - name: Update RST File
+        run: |
+          # Define the file path and code to insert
+          rst_file="source/extensions.rst"
+          code_to_insert="- **${{ steps.list_repos.outputs.result }} Extension**
+        
+          Description of the ${{ steps.list_repos.outputs.result }} extension.
+        
+          For more information about the ${{ steps.list_repos.outputs.result }} extension, refer to the :doc:`${{ steps.list_repos.outputs.result }}:index` documentation."
+        
+          # Sort the lines alphabetically (excluding the line to insert)
+          sorted_content=$(grep -v "$code_to_insert" "$rst_file" | sort)
+        
+          # Insert the code after the Extensions section and sorted extensions
+          sed -i '/Extensions/a '"$code_to_insert"'' "$rst_file" <<< "$sorted_content"
+        # Ensure this step runs after the previous steps
+        needs: add_repos  # Adjust this according to the step name
+        
+
       - name: Commit changes
         run: |
           git config --global user.email "github-actions@example.com"
