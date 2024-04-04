@@ -7,7 +7,6 @@ You can explore documentation from other Salt Extensions below!
 Extensions
 ----------
 
-
 - **Python Extension**
 
   Description of the Python extension.
