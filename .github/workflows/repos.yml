@@ -174,8 +174,8 @@ jobs:
               FS = "\n"; 
             } 
             { 
-              if ($0 ~ /^Extensions\n-{10,}/) 
-                print $0 code; 
+              if ($0 ~ /Welcome to the Salt Extensions page\./) 
+                print $0 "\n" code; 
               else 
                 print $0; 
             }' "$rst_file" > temp_file && mv temp_file "$rst_file"
