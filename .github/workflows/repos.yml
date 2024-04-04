@@ -174,7 +174,7 @@ jobs:
               FS = "\n"; 
             } 
             { 
-              if ($0 ~ /Extensions\n-{10,}/) 
+              if ($0 ~ /^Extensions\n-{10,}/) 
                 print $0 code; 
               else 
                 print $0; 
