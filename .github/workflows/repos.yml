@@ -159,7 +159,7 @@ jobs:
       
           # Loop through the repository names to generate extension entries
           for repo_name in $repo_names; do
-            extensions+="\\n- **${repo_name} Extension**\\n\\n\tDescription of the ${repo_name} extension."
+            extensions+="\n- **${repo_name} Extension**\\n\\n\tDescription of the ${repo_name} extension."
           done
       
           # Insert the code after the introductory text
@@ -171,7 +171,7 @@ jobs:
             } 
             { 
               if ($0 ~ /Welcome to the Salt Extensions page\./) 
-                print $0 "\\n" code; 
+                print $0 "\n" code; 
               else 
                 print $0; 
             }' "$rst_file" > temp_file && mv temp_file "$rst_file"
