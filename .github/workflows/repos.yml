@@ -149,15 +149,20 @@ jobs:
         run: |
           # Define the file path and code to insert
           rst_file="source/extensions.rst"
-          repo_name="${{ steps.add_repos.outputs.result }}"
-          code_to_insert="\\
-            - **${repo_name} Extension**\\
-            \\
-            Description of the ${repo_name} extension.\\
+          repo_names="${{ steps.add_repos.outputs.repo_name }}"
+            
+          # Loop through the repository names to generate extension entries
+          extensions=""
+          for repo_name in $repo_names; do
+              extensions+="\\
+              - **${repo_name} Extension**\\
+              \\
+              Description of the ${repo_name} extension.\\
           "
-    
+          done
+        
           # Insert the code after the Extensions section header
-          awk -v code="$code_to_insert" '
+          awk -v code="$extensions" '
             BEGIN { 
               RS = ""; 
               ORS = "\n\n"; 
@@ -169,7 +174,6 @@ jobs:
               else 
                 print $0; 
             }' "$rst_file" > temp_file && mv temp_file "$rst_file"
-
 
 
   
