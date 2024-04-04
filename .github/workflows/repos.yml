@@ -163,7 +163,8 @@ jobs:
           sorted_content=$(grep -v "$code_to_insert" "$rst_file" | sort)
           
           # Insert the code after the Extensions section and sorted extensions
-          echo "$sorted_content" | sed '/Extensions/a '"$code_to_insert"'' > temp_file && mv temp_file "$rst_file"
+          echo "$sorted_content" | sed "/Extensions/a ${code_to_insert}" > temp_file && mv temp_file "$rst_file"
+
   
       - name: Commit changes
         run: |
