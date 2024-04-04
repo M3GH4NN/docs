@@ -153,17 +153,18 @@ jobs:
         run: |
           # Define the file path and code to insert
           rst_file="source/extensions.rst"
-          code_to_insert="- **${{ steps.list_repos.outputs.result }} Extension**
+          code_to_insert="- **${{ steps.add_repos.outputs.result }} Extension**
         
-          Description of the ${{ steps.list_repos.outputs.result }} extension.
+          Description of the ${{ steps.add_repos.outputs.result }} extension.
         
-          For more information about the ${{ steps.list_repos.outputs.result }} extension, refer to the :doc:`${{ steps.list_repos.outputs.result }}:index` documentation."
+          For more information about the ${{ steps.add_repos.outputs.result }} extension, refer to the :doc:`${{ steps.add_repos.outputs.result }}:index` documentation."
         
           # Sort the lines alphabetically (excluding the line to insert)
           sorted_content=$(grep -v "$code_to_insert" "$rst_file" | sort)
         
           # Insert the code after the Extensions section and sorted extensions
           sed -i '/Extensions/a '"$code_to_insert"'' "$rst_file" <<< "$sorted_content"
+        
 
       - name: Commit changes
         run: |
