@@ -1,13 +1,12 @@
 Roll-up Page
 ============
 
-Welcome to the central documentation roll-up page.
+Welcome to the central documentation roll-up page!!!
 
 Extensions
 ----------
 
 You can explore documentation from other repositories below!
-
 
 Dummy Extension
 ----------------
