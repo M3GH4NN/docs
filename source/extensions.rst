@@ -2,10 +2,10 @@ Salt Extensions Page
 =====================
 
 Welcome to the Salt Extensions page. 
-You can explore documentation from other Salt Extensions below!
 
 Extensions
 ----------
+You can explore documentation from other Salt Extensions below!
 - **Python Extension**
 
   Description of the Python extension.
