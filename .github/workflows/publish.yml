@@ -46,6 +46,7 @@ jobs:
             saltpylint
       - name: Build Documentation
         run: |
+          # build files must be in root directory for github pages
           sphinx-build -b html source .
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

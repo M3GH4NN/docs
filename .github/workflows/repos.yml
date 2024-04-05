@@ -120,6 +120,7 @@ jobs:
                   echo "Repository $repo is missing from Intersphinx Mapping."
 
                   # Add missing repository to conf.py
+                  # TODO: url needs to be env var
                   awk -v repo_name="$repo" -v repo_url="https://github.com/saltstack/salt" '
                     # Initialize a variable to track if the block is found
                     BEGIN { found = 0 } 
@@ -140,39 +141,42 @@ jobs:
                     # Print all lines
                     { print } 
                   ' source/conf.py > source/temp.py && mv source/temp.py source/conf.py
-                  # Output the added repository name
-                  echo "::set-output name=repo_name::$repo"
+                  # Accumulate the repository name
+                  repo_names+="$repo "
               fi
           done
+      
+          # Output the accumulated repository names
+          echo "::set-output name=repo_names::$repo_names"
       
       - name: Update RST File
         run: |
           # Define the file path and code to insert
           rst_file="source/extensions.rst"
-          repo_name="${{ steps.add_repos.outputs.result }}"
-          code_to_insert="\\
-            - **${repo_name} Extension**\\
-            \\
-            Description of the ${repo_name} extension.\\
-          "
-    
-          # Insert the code after the Extensions section header
-          awk -v code="$code_to_insert" '
+          repo_names="${{ steps.add_repos.outputs.repo_names }}"
+          
+          # Initialize an empty variable to accumulate extension entries
+          extensions=""
+      
+          # Loop through the repository names to generate extension entries
+          for repo_name in $repo_names; do
+            extensions+="\n- **${repo_name} Extension**\\n\\n\tDescription of the ${repo_name} extension."
+          done
+      
+          # Insert the code after the introductory text
+          awk -v code="$extensions" '
             BEGIN { 
               RS = ""; 
               ORS = "\n\n"; 
               FS = "\n"; 
             } 
             { 
-              if ($1 == "Extensions") 
-                print $0 code; 
+              if ($0 ~ /Welcome to the Salt Extensions page\./) 
+                print $0 "\n" code; 
               else 
                 print $0; 
             }' "$rst_file" > temp_file && mv temp_file "$rst_file"
-
-
-
-  
+        
       - name: Commit changes
         run: |
           git config --global user.email "github-actions@example.com"
@@ -189,5 +193,5 @@ jobs:
           title: Update intersphinx_mapping in conf.py
           body: |
             This PR updates the intersphinx_mapping in conf.py file to include missing repositories.
-            Please review and merge
+            Please review and merge.
 
