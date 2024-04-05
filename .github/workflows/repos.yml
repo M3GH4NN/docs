@@ -120,6 +120,7 @@ jobs:
                   echo "Repository $repo is missing from Intersphinx Mapping."
 
                   # Add missing repository to conf.py
+                  # TODO: url needs to be env var
                   awk -v repo_name="$repo" -v repo_url="https://github.com/saltstack/salt" '
                     # Initialize a variable to track if the block is found
                     BEGIN { found = 0 } 
@@ -176,9 +177,6 @@ jobs:
                 print $0; 
             }' "$rst_file" > temp_file && mv temp_file "$rst_file"
         
-        
-
-  
       - name: Commit changes
         run: |
           git config --global user.email "github-actions@example.com"
