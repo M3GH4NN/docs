@@ -9,6 +9,9 @@ Welcome to the Salt Extensions page.
 - **saltext-moosefs Extension**
 
 	Description of the saltext-moosefs extension.
+- **saltext-azurerm Extension**
+
+	Description of the saltext-azurerm extension.
 - **saltext-proxmox Extension**
 
 	Description of the saltext-proxmox extension.
@@ -129,10 +132,4 @@ Welcome to the Salt Extensions page.
   Description of the Salt extension.
 
   For more information about the Salt extension, refer to the :doc:`salt:contents` documentation.
-
-- **AzureRM Extension**
-
-  Description of the AzureRM extension.
-
-  For more information about the AzureRM extension, refer to the :doc:`saltext-azurerm:index` documentation.
 
