@@ -21,9 +21,5 @@ Welcome to the Salt Extensions page.
 
   For more information about the Salt extension, refer to the :doc:`salt:contents` documentation.
 
-- **AzureRM Extension**
 
-  Description of the AzureRM extension.
-
-  For more information about the AzureRM extension, refer to the :doc:`saltext-azurerm:index` documentation.
 
