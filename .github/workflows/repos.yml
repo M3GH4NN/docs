@@ -192,13 +192,5 @@ jobs:
           base: main
           title: Update intersphinx_mapping in conf.py
           body: |
-            This PR updates the intersphinx_mapping in conf.py file to include missing repositories.
+            This PR updates the intersphinx_mapping in conf.py file to include missing repositories. It also updates the extensions.rst with the missing repositories.
             Please review and merge.
-
-      - name: Delete Branch
-        if: github.event_name == 'pull_request' && github.event.action == 'closed'
-        uses: ad-m/github-push-action@v0.7.0
-        with:
-          branch: update-mapping
-          github_token: ${{ secrets.TOKEN }}
-          force: true  # Forces deletion even if the branch is not fully merged
