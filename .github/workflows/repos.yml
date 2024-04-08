@@ -187,7 +187,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.TOKEN }} # github token
           branch: update-mapping
           base: main
           title: Update intersphinx_mapping in conf.py
