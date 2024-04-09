@@ -1,5 +1,8 @@
 Meeting Notes
 ==============
+
+:parser: myst_parser.sphinx_
+
 Meeting notes below:
 
 .. include:: working_group/2024/2024-04-04-meeting-notes.md
@@ -7,6 +10,3 @@ Meeting notes below:
 .. include:: working_group/2024/2024-03-07-meeting-notes.md
 .. include:: working_group/2024/2024-02-15-meeting-notes.md 
 .. include:: working_group/2024/2024-02-01-meeting-notes.md 
-
-   :parser: myst_parser.sphinx_
-
