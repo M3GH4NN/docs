@@ -48,6 +48,11 @@ extensions = [
     "sphinx_inline_tabs",
 ]
 
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
+
 myst_enable_extensions = [
     "colon_fence",
     "deflist",
@@ -117,45 +122,10 @@ intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
     "pytest": ("https://docs.pytest.org/en/stable", None),
     "salt": ("https://docs.saltproject.io/en/latest/", None),
-    "saltext-prometheus": ("https://github.com/saltstack/salt", None),
-    "saltext-moosefs": ("https://github.com/saltstack/salt", None),
-    "saltext-azurerm": ("https://github.com/saltstack/salt", None),
-    "saltext-proxmox": ("https://github.com/saltstack/salt", None),
-    "saltext-zabbix": ("https://github.com/saltstack/salt", None),
-    "saltext-apache": ("https://github.com/saltstack/salt", None),
-    "saltext-vault": ("https://github.com/saltstack/salt", None),
-    "extension_migration": ("https://github.com/saltstack/salt", None),
-    "saltext-mysql": ("https://github.com/saltstack/salt", None),
-    "saltext-namecheap": ("https://github.com/saltstack/salt", None),
-    "saltext-restconf": ("https://github.com/saltstack/salt", None),
-    "saltext-elasticsearch": ("https://github.com/saltstack/salt", None),
-    "saltext-kubernetes": ("https://github.com/saltstack/salt", None),
-    "salt-extension-copier": ("https://github.com/saltstack/salt", None),
-    "saltext-pushover": ("https://github.com/saltstack/salt", None),
-    "saltext-servicenow": ("https://github.com/saltstack/salt", None),
-    "saltext-mongodb": ("https://github.com/saltstack/salt", None),
-    "central-artifacts": ("https://github.com/saltstack/salt", None),
-    "saltext-mattermost": ("https://github.com/saltstack/salt", None),
-    "saltext-helm": ("https://github.com/saltstack/salt", None),
-    "saltext-consul": ("https://github.com/saltstack/salt", None),
-    "saltext-grafana": ("https://github.com/saltstack/salt", None),
-    "saltext-github": ("https://github.com/saltstack/salt", None),
-    "saltext-freezer": ("https://github.com/saltstack/salt", None),
-    "saltext-haproxy": ("https://github.com/saltstack/salt", None),
-    "saltext-redis": ("https://github.com/saltstack/salt", None),
-    "saltext-pagerduty": ("https://github.com/saltstack/salt", None),
-    ".github": ("https://github.com/saltstack/salt", None),
-    "saltext-dell": ("https://github.com/saltstack/salt", None),
-    "saltext-splunk": ("https://github.com/saltstack/salt", None),
-    "saltext-zookeeper": ("https://github.com/saltstack/salt", None),
-    "community-extensions-holding": ("https://github.com/saltstack/salt", None),
-    "community": ("https://github.com/saltstack/salt", None),
-    "salt-describe": ("https://github.com/saltstack/salt", None),
-    "saltext-vector": ("https://github.com/saltstack/salt", None),
-    "saltext-tsl": ("https://github.com/saltstack/salt", None),
-    "saltext-netbox": ("https://github.com/saltstack/salt", None),
 }
-
+ 
+    
+# "dummy": ("https://m3gh4nn.github.io/", None),
 # ----- Autodoc Config ---------------------------------------------------------------------------------------------->
 autodoc_default_options = {"member-order": "bysource"}
 autodoc_mock_imports = ["salt"]

@@ -1,9 +1,9 @@
 name: Check for New Repositories
 
 on:
-    schedule:
-        - cron: '25 20 * * *'  # Runs at 3 am Eastern Time (7 am UTC)
-        # - cron: '0 7 * * *'  # Runs at 3 am Eastern Time (7 am UTC)
+  push:
+    branches:
+      - new-repo-check  # Adjust this according to your default branch
 
 jobs:
   check_for_new_repos:
@@ -187,11 +187,10 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.TOKEN }} # github token
           branch: update-mapping
           base: main
           title: Update intersphinx_mapping in conf.py
           body: |
-            This PR updates the intersphinx_mapping in conf.py file to include missing repositories.
+            This PR updates the intersphinx_mapping in conf.py file to include missing repositories. It also updates the extensions.rst with the missing repositories.
             Please review and merge.
-
