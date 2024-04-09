@@ -1,4 +1,4 @@
-# 2024 February 1 - Meeting notes
+# 2024 February 15 - Meeting notes
 
 ## Meeting recording
 
