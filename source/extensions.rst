@@ -21,5 +21,3 @@ Welcome to the Salt Extensions page.
 
   For more information about the Salt extension, refer to the :doc:`salt:contents` documentation.
 
-
-
