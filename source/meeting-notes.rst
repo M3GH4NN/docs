@@ -4,4 +4,4 @@ Meeting Notes
 .. toctree::
     :glob:
 
-    *.md
+    working_group/*.md
