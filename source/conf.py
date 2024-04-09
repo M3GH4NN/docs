@@ -117,7 +117,6 @@ intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
     "pytest": ("https://docs.pytest.org/en/stable", None),
     "salt": ("https://docs.saltproject.io/en/latest/", None),
-    "dummy": ("https://m3gh4nn.github.io/", None),
     "saltext-prometheus": ("https://github.com/saltstack/salt", None),
     "saltext-moosefs": ("https://github.com/saltstack/salt", None),
     "saltext-azurerm": ("https://github.com/saltstack/salt", None),
