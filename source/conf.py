@@ -48,6 +48,11 @@ extensions = [
     "sphinx_inline_tabs",
 ]
 
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
+
 myst_enable_extensions = [
     "colon_fence",
     "deflist",
@@ -117,6 +122,7 @@ intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
     "pytest": ("https://docs.pytest.org/en/stable", None),
     "salt": ("https://docs.saltproject.io/en/latest/", None),
+    "dummy": ("https://m3gh4nn.github.io/", None),
 }
 
 # ----- Autodoc Config ---------------------------------------------------------------------------------------------->
